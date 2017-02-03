@@ -2,6 +2,8 @@ import configparser
 from TwitterAPI import TwitterAPI
 import sys
 import time
+import yagmail
+from datetime import datetime
 
 
 def get_twitter(config_file):
@@ -75,20 +77,52 @@ def extract_topics(infile, outfile, keyword):
         for topic in topics:
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6])
             tsv_outfile.write(row)
-    
-    return topics
+
+    print('topics filtered.')
+
+def email_file(config):
+    from_addr = config.get('email', 'from')
+    passwrd = config.get('email', 'pass')
+    to_addr = config.get('email', 'to')
+    filename = config.get('files', 'filtered_topics')
+
+    contents = ['Testing sending file. See attached.', filename]
+
+    yag = yagmail.SMTP(from_addr, passwrd)
+    yag.send(to_addr, 'test', contents)
+    print('email sent.')
 
 
 def main():
     config = configparser.ConfigParser()
     config.read('settings.cfg')
-    all_topics = config.get('files', 'all_topics')
-    filtered_topics = config.get('files', 'all_topics')
+    #all_topics = config.get('files', 'all_topics')
+    #filtered_topics = config.get('files', 'filtered_topics')
     filter_term = config.get('files', 'filter_term')
+    prefix = config.get('files', 'prefix')
     twitter = get_twitter('settings.cfg')
 
     place_ids = find_place_ids(twitter)
     places = find_places(twitter)
+
+    today = datetime.today()
+    year, month, day = today.year, today.month, today.day
+
+    if len(str(month)) < 2:
+        month = "0%d" %(month)
+    else:
+        month = "%d" %(month)
+    
+    if len(str(day)) < 2:
+        day = "0%d" %(day)
+    else:
+        day = "%d" %(day)
+
+    datestring = "%d-%s-%s" %(year, month, day)
+
+    all_topics = prefix + '-' + datestring + '.csv'
+    filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
+
     
     with open(all_topics, 'w') as tsv_file:
         tsv_file.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\n')
@@ -102,7 +136,7 @@ def main():
             for p in places:
                 if p['woeid'] == pid:
                     name = p['name']
-            with open('all_topics', 'a') as tsv_file:
+            with open(all_topics, 'a') as tsv_file:
                 #print(trends[0])
                 for topic in trends:
                     tsv_file.write(name+'\t'+ topic)
@@ -111,6 +145,7 @@ def main():
             sleep(60*5)
     
     extract_topics(all_topics, filtered_topics, filter_term)
+    email_file(config)
     
 if __name__ == '__main__':
     main()
