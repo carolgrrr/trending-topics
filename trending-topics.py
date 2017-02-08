@@ -4,6 +4,7 @@ import sys
 import time
 import yagmail
 from datetime import datetime
+from collections import Counter
 
 
 def get_twitter(config_file):
@@ -80,16 +81,25 @@ def extract_topics(infile, outfile, keyword):
 
     print('topics filtered.')
 
-def email_file(config):
+def count_topics(filename):
+	all_topics = []
+	with open(filename, 'r') as topics:
+        for line in topics:
+            row = line.split()
+            all_topics.append(row[2])
+
+    topic_count = Counter(all_topics)
+
+
+def email_file(config, filename):
     from_addr = config.get('email', 'from')
     passwrd = config.get('email', 'pass')
     to_addr = config.get('email', 'to')
-    filename = config.get('files', 'filtered_topics')
 
-    contents = ['Testing sending file. See attached.', filename]
+    contents = ['See attached.', filename]
 
     yag = yagmail.SMTP(from_addr, passwrd)
-    yag.send(to_addr, 'test', contents)
+    yag.send(to_addr, filename, contents)
     print('email sent.')
 
 
@@ -145,7 +155,7 @@ def main():
             sleep(60*5)
     
     extract_topics(all_topics, filtered_topics, filter_term)
-    email_file(config)
+    email_file(config, filtered_topics)
     
 if __name__ == '__main__':
     main()
