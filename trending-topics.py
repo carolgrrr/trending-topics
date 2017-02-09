@@ -82,13 +82,14 @@ def extract_topics(infile, outfile, keyword):
     print('topics filtered.')
 
 def count_topics(filename):
-	all_topics = []
-	with open(filename, 'r') as topics:
+    all_topics = []
+    with open(filename, 'r') as topics:
         for line in topics:
             row = line.split()
             all_topics.append(row[2])
 
     topic_count = Counter(all_topics)
+    return topic_count
 
 
 def email_file(config, filename):
@@ -102,19 +103,7 @@ def email_file(config, filename):
     yag.send(to_addr, filename, contents)
     print('email sent.')
 
-
-def main():
-    config = configparser.ConfigParser()
-    config.read('settings.cfg')
-    #all_topics = config.get('files', 'all_topics')
-    #filtered_topics = config.get('files', 'filtered_topics')
-    filter_term = config.get('files', 'filter_term')
-    prefix = config.get('files', 'prefix')
-    twitter = get_twitter('settings.cfg')
-
-    place_ids = find_place_ids(twitter)
-    places = find_places(twitter)
-
+def get_datestring():
     today = datetime.today()
     year, month, day = today.year, today.month, today.day
 
@@ -129,11 +118,9 @@ def main():
         day = "%d" %(day)
 
     datestring = "%d-%s-%s" %(year, month, day)
+    return datestring
 
-    all_topics = prefix + '-' + datestring + '.csv'
-    filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
-
-    
+def get_trending_topics(filename):
     with open(all_topics, 'w') as tsv_file:
         tsv_file.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\n')
 
@@ -147,15 +134,54 @@ def main():
                 if p['woeid'] == pid:
                     name = p['name']
             with open(all_topics, 'a') as tsv_file:
-                #print(trends[0])
                 for topic in trends:
                     tsv_file.write(name+'\t'+ topic)
         except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as exc:
             print("error: %s" % exc)
             sleep(60*5)
+            
+def get_top_topics(filename):
+    topic_counter = count_topics(filename)
+    top_topics = []
+    with open(filename, 'r') as topics:
+        for line in topics:
+            row = line.split('\t')
+            loc, woe, name, events, promoted = row[0], row[1], row[2], row[4], row[5]
+            count = topic_counter[name]
+            top_topics.append((loc, woe, name, events, promoted, count))
+    sorted_topics = sorted(top_topics, key=lambda x: (x[5], x[2]), reverse=True)
+    top_filename = "top-" + filename
+    with open(top_filename, 'w') as tsv_file:
+        tsv_file.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\n')
     
+        for topic in sorted_topics:
+            if topic[5] > 1:
+                row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
+                tsv_file.write(row)
+
+
+
+def main():
+    config = configparser.ConfigParser()
+    config.read('settings.cfg')
+    filter_term = config.get('files', 'filter_term')
+    prefix = config.get('files', 'prefix')
+    twitter = get_twitter('settings.cfg')
+
+    place_ids = find_place_ids(twitter)
+    places = find_places(twitter)
+
+    datestring = get_datestring()
+
+    all_topics = prefix + '-' + datestring + '.csv'
+    filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
+    top_topics = 'top-' + all_topics
+
+    get_trending_topics(all_topics)
     extract_topics(all_topics, filtered_topics, filter_term)
     email_file(config, filtered_topics)
+    get_top_topics(all_topics)
+    email_file(config, top_topics)
     
 if __name__ == '__main__':
     main()
