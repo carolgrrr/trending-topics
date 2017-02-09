@@ -120,8 +120,8 @@ def get_datestring():
     datestring = "%d-%s-%s" %(year, month, day)
     return datestring
 
-def get_trending_topics(filename):
-    with open(all_topics, 'w') as tsv_file:
+def get_trending_topics(filename, place_ids, places, twitter):
+    with open(filename, 'w') as tsv_file:
         tsv_file.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\n')
 
     # iterate through all twitter locations 
@@ -133,10 +133,10 @@ def get_trending_topics(filename):
             for p in places:
                 if p['woeid'] == pid:
                     name = p['name']
-            with open(all_topics, 'a') as tsv_file:
+            with open(filename, 'a') as tsv_file:
                 for topic in trends:
                     tsv_file.write(name+'\t'+ topic)
-        except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as exc:
+        except (ConnectionError) as exc:
             print("error: %s" % exc)
             sleep(60*5)
             
@@ -177,7 +177,7 @@ def main():
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
 
-    get_trending_topics(all_topics)
+    get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
     email_file(config, filtered_topics)
     get_top_topics(all_topics)
