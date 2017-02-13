@@ -93,15 +93,17 @@ def count_topics(filename):
 
 
 def email_file(config, filename):
-    from_addr = config.get('email', 'from')
-    passwrd = config.get('email', 'pass')
-    to_addr = config.get('email', 'to')
+    from_address = config.get('email', 'from')
+    password = config.get('email', 'pass')
+    to_addresses = config.get('email', 'to')
 
     contents = ['See attached.', filename]
+    email_list = to_addresses.split(',')
 
-    yag = yagmail.SMTP(from_addr, passwrd)
-    yag.send(to_addr, filename, contents)
-    print('email sent.')
+    for to_address in email_list:
+        yag = yagmail.SMTP(from_address, password)
+        yag.send(to_address, filename, contents)
+        print('email sent to: %s') %(to_address)
 
 def get_datestring():
     today = datetime.today()
