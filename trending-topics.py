@@ -72,11 +72,14 @@ def extract_topics(infile, outfile, keyword):
             row = line.split()
             if keyword in row[2]:
                 topics.append(row)
+
+    topic_counter = count_topics(infile)
     
     with open(outfile, 'w') as tsv_outfile:
-        tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\n')
+        tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
         for topic in topics:
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6])
+            count = topic_counter[topic]
+            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6],count)
             tsv_outfile.write(row)
 
     print('topics filtered.')
@@ -103,7 +106,7 @@ def email_file(config, filename):
     for to_address in email_list:
         yag = yagmail.SMTP(from_address, password)
         yag.send(to_address, filename, contents)
-        print('email sent to: %s') %(to_address)
+        print('email sent.')
 
 def get_datestring():
     today = datetime.today()
