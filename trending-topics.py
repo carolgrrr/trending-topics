@@ -78,7 +78,7 @@ def extract_topics(infile, outfile, keyword):
     with open(outfile, 'w') as tsv_outfile:
         tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
         for topic in topics:
-            count = topic_counter[topic]
+            count = topic_counter[topic[2]]
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6],count)
             tsv_outfile.write(row)
 
