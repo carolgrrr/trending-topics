@@ -74,6 +74,7 @@ def extract_topics(infile, outfile, keyword):
                 topics.append(row)
 
     topic_counter = count_topics(infile)
+    sorted_topics = sorted(topics, key=lambda x: (x[5], x[2]), reverse=True)
     
     with open(outfile, 'w') as tsv_outfile:
         tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
@@ -164,6 +165,34 @@ def get_top_topics(filename):
                 row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
                 tsv_file.write(row)
 
+def add_regions(original_file, region_file):
+    topics_with_regions = []
+    region_list = []
+    with open(region_file, 'r') as regions:
+        for line in topics:
+            row = line.split('\t')
+            region_list.append(row)
+
+    with open(original_file, 'r') as topics:
+        for line in topics:
+            row = line.split('\t')
+            loc = row[0]
+            for region in region_list:
+                new_loc = region[0]
+                if loc == new_loc:
+                    row.extend(region[1], region[2], region[3], region[4])
+            topics_with_regions.append(row)
+
+    reg_filename = "regions-" + original_file
+    with open(reg_filename, 'w') as tsv_file:
+        tsv_file.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
+
+        for topic in topics_with_regions:
+            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5],topic[6], topic[7], topic[8], topic[9])
+            tsv_file.write(row)
+
+
+
 
 
 def main():
@@ -184,9 +213,9 @@ def main():
 
     get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
-    email_file(config, filtered_topics)
+    #email_file(config, filtered_topics)
     get_top_topics(all_topics)
-    email_file(config, top_topics)
+    #email_file(config, top_topics)
     
 if __name__ == '__main__':
     main()
