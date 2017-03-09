@@ -74,13 +74,20 @@ def extract_topics(infile, outfile, keyword):
                 topics.append(row)
 
     topic_counter = count_topics(infile)
-    sorted_topics = sorted(topics, key=lambda x: (x[5], x[2]), reverse=True)
+
+    counted_topics = []
+    for topic in topics:
+        count = topic_counter[topic[2]]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        counted_topics.append(row)
+
+    sorted_topics = sorted(counted_topics, key=lambda x: (x[5], x[2]), reverse=True)
     
     with open(outfile, 'w') as tsv_outfile:
         tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
-        for topic in topics:
-            count = topic_counter[topic[2]]
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6],count)
+        for topic in sorted_topics:
+            print(topic)
+            row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
             tsv_outfile.write(row)
 
     print('topics filtered.')
@@ -192,9 +199,6 @@ def add_regions(original_file, region_file):
             tsv_file.write(row)
 
 
-
-
-
 def main():
     config = configparser.ConfigParser()
     config.read('settings.cfg')
@@ -213,9 +217,9 @@ def main():
 
     get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
-    #email_file(config, filtered_topics)
+    email_file(config, filtered_topics)
     get_top_topics(all_topics)
-    #email_file(config, top_topics)
+    email_file(config, top_topics)
     
 if __name__ == '__main__':
     main()
