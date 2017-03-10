@@ -74,12 +74,20 @@ def extract_topics(infile, outfile, keyword):
                 topics.append(row)
 
     topic_counter = count_topics(infile)
+
+    counted_topics = []
+    for topic in topics:
+        count = topic_counter[topic[2]]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        counted_topics.append(row)
+
+    sorted_topics = sorted(counted_topics, key=lambda x: (x[5], x[2]), reverse=True)
     
     with open(outfile, 'w') as tsv_outfile:
-        tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
-        for topic in topics:
-            count = topic_counter[topic[2]]
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6],count)
+        tsv_outfile.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\n')
+        for topic in sorted_topics:
+            print(topic)
+            row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
             tsv_outfile.write(row)
 
     print('topics filtered.')
@@ -177,7 +185,6 @@ def add_regions(original_file, region_file):
     with open(original_file, 'r') as topics:
         next(topics)
         for line in topics:
-            line = line.strip('\n')
             row = line.split('\t')
             loc = row[0]
             for region in region_list:
@@ -191,12 +198,10 @@ def add_regions(original_file, region_file):
         tsv_file.write('Location\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
 
         for topic in topics_with_regions:
-            #print(topic)
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
             
     print("regions added.")
-
 
 
 def main():
