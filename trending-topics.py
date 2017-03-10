@@ -215,14 +215,16 @@ def main():
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
+    region_topics = 'regions-and-' + filtered_topics
+    region_top_topics = 'regions-and-' + top_topics
 
     get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
     add_regions(filtered_topics, region_filename)
-    email_file(config, filtered_topics)
+    email_file(config, region_topics)
     get_top_topics(all_topics)
     add_regions(top_topics, region_filename)
-    email_file(config, top_topics)
+    email_file(config, region_top_topics)
     
 if __name__ == '__main__':
     main()
