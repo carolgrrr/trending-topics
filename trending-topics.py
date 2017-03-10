@@ -185,6 +185,7 @@ def add_regions(original_file, region_file):
     with open(original_file, 'r') as topics:
         next(topics)
         for line in topics:
+            line = line.strip('\n')
             row = line.split('\t')
             loc = row[0]
             for region in region_list:
