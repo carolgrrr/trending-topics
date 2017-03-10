@@ -84,7 +84,7 @@ def extract_topics(infile, outfile, keyword):
     sorted_topics = sorted(counted_topics, key=lambda x: (x[5], x[2]), reverse=True)
     
     with open(outfile, 'w') as tsv_outfile:
-        tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
+        tsv_outfile.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\n')
         for topic in sorted_topics:
             print(topic)
             row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
