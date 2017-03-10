@@ -176,27 +176,32 @@ def add_regions(original_file, region_file):
     topics_with_regions = []
     region_list = []
     with open(region_file, 'r') as regions:
-        for line in topics:
-            row = line.split('\t')
+        next(regions)
+        for line in regions:
+            line = line.strip('\n')
+            row = line.split(',')
             region_list.append(row)
 
     with open(original_file, 'r') as topics:
+        next(topics)
         for line in topics:
             row = line.split('\t')
             loc = row[0]
             for region in region_list:
                 new_loc = region[0]
                 if loc == new_loc:
-                    row.extend(region[1], region[2], region[3], region[4])
-            topics_with_regions.append(row)
-
-    reg_filename = "regions-" + original_file
+                    row.extend([region[1], region[2], region[3], region[4]])
+                    topics_with_regions.append(row)
+    
+    reg_filename = "regions-and-" + original_file
     with open(reg_filename, 'w') as tsv_file:
-        tsv_file.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
+        tsv_file.write('Location\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
 
         for topic in topics_with_regions:
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5],topic[6], topic[7], topic[8], topic[9])
+            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
+            
+    print("regions added.")
 
 
 def main():
@@ -204,6 +209,7 @@ def main():
     config.read('settings.cfg')
     filter_term = config.get('files', 'filter_term')
     prefix = config.get('files', 'prefix')
+    region_filename = config.get('files', 'regions')
     twitter = get_twitter('settings.cfg')
 
     place_ids = find_place_ids(twitter)
@@ -217,8 +223,10 @@ def main():
 
     get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
+    add_regions(filtered_topics, region_filename)
     email_file(config, filtered_topics)
     get_top_topics(all_topics)
+    add_regions(top_topics, region_filename)
     email_file(config, top_topics)
     
 if __name__ == '__main__':

@@ -1,0 +1,464 @@
+Location,Latitude,Longitude,Nation,Region
+Cairo,30.0444196,31.2357116,Egypt,Africa
+Accra,5.6037168,-0.1869644,Ghana,Africa
+Ghana,7.946527,-1.023194,Ghana,Africa
+Kumasi,6.6666004,-1.6162709,Ghana,Africa
+Kenya,-0.023559,37.906193,Kenya,Africa
+Mombasa,-4.0434771,39.6682065,Kenya,Africa
+Nairobi,-1.2920659,36.8219462,Kenya,Africa
+Benin City,6.334986,5.6037465,Nigeria,Africa
+Ibadan,7.3775355,3.9470396,Nigeria,Africa
+Kaduna,10.5104642,7.4165053,Nigeria,Africa
+Kano,12.0021794,8.59195609999999,Nigeria,Africa
+Lagos,6.5243793,3.3792057,Nigeria,Africa
+Nigeria,9.081999,8.675277,Nigeria,Africa
+Port Harcourt,4.815554,7.0498442,Nigeria,Africa
+Cape Town,-33.9248685,18.4240553,South Africa,Africa
+Durban,-29.8586803999999,31.0218404,South Africa,Africa
+Johannesburg,-26.2041028,28.0473051,South Africa,Africa
+Port Elizabeth,-33.7139247,25.5207358,South Africa,Africa
+Pretoria,-25.7478676,28.2292712,South Africa,Africa
+South Africa,-30.559482,22.937506,South Africa,Africa
+Soweto,-26.2485377,27.8540323,South Africa,Africa
+Las Palmas,28.1235459,-15.4362574,Spain,Africa
+Delhi,28.7040592,77.1024901999999,India,Asia
+Indore,22.7195687,75.8577258,India,Asia
+Jaipur,26.9124336,75.7872709,India,Asia
+Kanpur,26.449923,80.3318736,India,Asia
+Kolkata,22.572646,88.363895,India,Asia
+Lucknow,26.8466937,80.9461659999999,India,Asia
+Nagpur,21.1458004,79.0881546,India,Asia
+Patna,25.5940947,85.1375645,India,Asia
+Rajkot,22.3038945,70.8021598999999,India,Asia
+Ranchi,23.3440997,85.309562,India,Asia
+Srinagar,34.0836708,74.7972825,India,Asia
+Surat,21.1702401,72.8310607,India,Asia
+Thane,19.2183307,72.9780897,India,Asia
+Chiba,35.6050574,140.1233063,Japan,Asia
+Fukuoka,33.5903547,130.4017155,Japan,Asia
+Hamamatsu,34.7108344,137.7261258,Japan,Asia
+Hiroshima,34.3852029,132.4552927,Japan,Asia
+Japan,36.204824,138.252924,Japan,Asia
+Kawasaki,37.3756902,-122.0595081,Japan,Asia
+Kitakyushu,33.8834093,130.8752161,Japan,Asia
+Kobe,34.690083,135.1955112,Japan,Asia
+Kumamoto,32.8031004,130.7078911,Japan,Asia
+Kyoto,35.0116363,135.7680294,Japan,Asia
+Nagoya,35.1814464,136.906398,Japan,Asia
+Niigata,37.9161924,139.0364126,Japan,Asia
+Okayama,34.6551456,133.9195019,Japan,Asia
+Okinawa,26.501301,127.945404,Japan,Asia
+Osaka,34.6937378,135.5021651,Japan,Asia
+Sagamihara,35.5714621,139.3731765,Japan,Asia
+Saitama,35.8617292,139.6454822,Japan,Asia
+Sapporo,43.0620958,141.3543763,Japan,Asia
+Sendai,38.268215,140.8693558,Japan,Asia
+Takamatsu,34.3427879,134.046574,Japan,Asia
+Tokyo,35.6894875,139.6917064,Japan,Asia
+Yokohama,35.4437078,139.6380256,Japan,Asia
+Korea,37.6639975999999,127.9784585,Korea,Asia
+Rawalpindi,33.598394,73.0441352,Pakistan,asia
+Makati,14.554729,121.0244452,Philippines,Asia
+Manila,14.5995124,120.9842195,Philippines,Asia
+Philippines,12.879721,121.774017,Philippines,Asia
+Chelyabinsk,55.1644419,61.4368431,Russia,Asia
+Irkutsk,52.2869740999999,104.3050183,Russia,Asia
+Kazan,55.8304307,49.0660806,Russia,Asia
+Khabarovsk,48.5027313,135.0662599,Russia,Asia
+Krasnodar,45.0392674,38.987221,Russia,Asia
+Krasnoyarsk,56.0152833999999,92.8932476,Russia,Asia
+Nizhny Novgorod,56.2965039,43.9360589,Russia,Asia
+Novosibirsk,55.0083525999999,82.9357327,Russia,Asia
+Omsk,54.9884804,73.3242362,Russia,Asia
+Perm,58.0296812999999,56.2667916,Russia,Asia
+Russia,61.52401,105.318756,Russia,Asia
+Samara,53.2415041,50.2212463,Russia,Asia
+Ufa,54.7387621,55.9720554,Russia,Asia
+Vladivostok,43.1198091,131.8869243,Russia,Asia
+Volgograd,48.708048,44.5133034,Russia,Asia
+Voronezh,51.6754966,39.2088823,Russia,Asia
+Yekaterinburg,56.8389260999999,60.6057025,Russia,Asia
+Ansan,37.3218778,126.8308848,South Korea,Asia
+Bucheon,37.5034138,126.7660309,South Korea,Asia
+Busan,35.1795543,129.0756416,South Korea,Asia
+Changwon,38.8432393,127.5597067,South Korea,Asia
+Daegu,35.8714354,128.601445,South Korea,Asia
+Daejeon,36.3504119,127.3845475,South Korea,Asia
+Goyang,37.6583599,126.8320201,South Korea,Asia
+Gwangju,35.1595454,126.8526012,South Korea,Asia
+Incheon,37.4562557,126.7052062,South Korea,Asia
+Seongnam,37.4449168,127.1388684,South Korea,Asia
+Seoul,37.566535,126.9779692,South Korea,Asia
+Suwon,37.2635727,127.0286009,South Korea,Asia
+Ulsan,35.5383773,129.3113596,South Korea,Asia
+Yongin,37.2410864,127.1775537,South Korea,Asia
+Pekanbaru,0.5070677,101.4477793,Sumatra,Asia
+Quezon City,14.6760413,121.0437003,Philippines,Asia Pacific
+Quito,-0.1806532,-78.4678382,Philippines,Asia Pacific
+Santo Domingo,18.4860575,-69.9312116999999,Dominican Republic,Caribbean
+Puerto Rico,18.220833,-66.590149,Puerto Rico US,Caribbean
+Dominican Republic,18.735693,-70.162651,Dominican Republic,Carribean
+Guatemala,15.783471,-90.2307589999999,Guatemala,Central America
+Guatemala City,14.6349149,-90.5068824,Guatemala,Central America
+Panama,8.537981,-80.782127,Panama,Central America
+Adelaide,-34.9284989,138.6007456,Australia,Down Under
+Australia,-25.274398,133.775136,Australia,Down Under
+Brisbane,-27.4697707,153.0251235,Australia,Down Under
+Canberra,-35.2809368,149.1300092,Australia,Down Under
+Darwin,-12.4634403,130.8456418,Australia,Down Under
+Melbourne,-37.813611,144.963056,Australia,Down Under
+Perth,-31.9505269,115.8604572,Australia,Down Under
+Sydney,-33.8688197,151.2092955,Australia,Down Under
+New Zealand,-40.900557,174.885971,New Zealand,Down Under
+Auckland,-36.8484597,174.7633315,New Zeeland,Down Under
+Austria,47.516231,14.550072,Austria,Europe
+Vienna,48.2081743,16.3738189,Austria,Europe
+Gomel,52.4411761,30.9878462,Belarus,Europe
+Grodno,53.6693538,23.8131306,Belarus,Europe
+Belgium,50.503887,4.469936,Belgium,Europe
+Denmark,56.26392,9.501785,Denmark,Europe
+Coventry,52.406822,-1.519693,England UK,Europe
+Derby,52.9225301,-1.4746186,England UK,Europe
+Leicester,52.6368778,-1.1397592,England UK,Europe
+Middlesbrough,54.574227,-1.234956,England UK,Europe
+Preston,53.763201,-2.70309,England UK,Europe
+Bordeaux,44.837789,-0.57918,France,Europe
+Brest,48.390394,-4.486076,France,Europe
+France,46.227638,2.213749,France,Europe
+Lille,50.62925,3.057256,France,Europe
+Lyon,45.764043,4.835659,France,Europe
+Marseille,43.296482,5.36978,France,Europe
+Montpellier,43.610769,3.876716,France,Europe
+Nantes,47.218371,-1.553621,France,Europe
+Paris,48.856614,2.3522219,France,Europe
+Rennes,48.117266,-1.6777926,France,Europe
+Strasbourg,48.5734053,7.75211129999999,France,Europe
+Toulouse,43.604652,1.444209,France,Europe
+Berlin,52.5200065999999,13.404954,Germany,Europe
+Bremen,53.0792961999999,8.8016937,Germany,Europe
+Cologne,50.937531,6.9602786,Germany,Europe
+Dortmund,51.5135872,7.4652981,Germany,Europe
+Dresden,51.0504088,13.7372621,Germany,Europe
+Dusseldorf,51.2277411,6.7734556,Germany,Europe
+Essen,51.4556432,7.0115552,Germany,Europe
+Frankfurt,50.1109221,8.6821267,Germany,Europe
+Germany,51.165691,10.451526,Germany,Europe
+Hamburg,53.5510846,9.9936818,Germany,Europe
+Leipzig,51.3396955,12.3730747,Germany,Europe
+Munich,48.1351253,11.5819806,Germany,Europe
+Stuttgart,48.7758459,9.1829321,Germany,Europe
+Thessaloniki,40.6400629,22.9444191,Greece,Europe
+Bologna,44.494887,11.3426163,Italy,Europe
+Genoa,44.4056499,8.946256,Italy,Europe
+Italy,41.87194,12.56738,Italy,Europe
+Milan,45.4654219,9.1859243,Italy,Europe
+Naples,26.1420358,-81.7948103,Italy,Europe
+Palermo,38.1156879,13.3612671,Italy,Europe
+Rome,41.9027835,12.4963655,Italy,Europe
+Turin,45.070312,7.68685649999999,Italy,Europe
+Latvia,56.879635,24.603189,Latvia,Europe
+Riga,56.9496487,24.1051864,Latvia,Europe
+Amsterdam,52.3702157,4.8951679,Netherlands,Europe
+Den Haag,52.0704978,4.3006999,Netherlands,Europe
+Netherlands,52.132633,5.29126599999999,Netherlands,Europe
+Rotterdam,51.9244201,4.4777325,Netherlands,Europe
+Utrecht,52.0907373999999,5.1214201,Netherlands,Europe
+Belfast,54.597285,-5.93012,Northern Ireland,Europe
+Bergen,60.3912627999999,5.3220544,Norway,Europe
+Gdańsk,54.3520252,18.6466384,Poland,Europe
+Kraków,50.0646500999999,19.9449799,Poland,Europe
+Lodz,51.7592485,19.4559833,Poland,Europe
+Odesa,46.482526,30.7233095,Poland,Europe
+Poland,51.919438,19.145136,Poland,Europe
+Poznań,52.406374,16.9251681,Poland,Europe
+Warsaw,52.2296756,21.0122287,Poland,Europe
+Wroclaw,51.1078852,17.0385376,Poland,Europe
+Portugal,39.3998719999999,-8.224454,Portugal,Europe
+Minsk,53.9045397999999,27.5615244,Russia,Europe
+Moscow,55.755826,37.6173,Russia,Europe
+Saint Petersburg,27.7518284,-82.6267345,Russia,Europe
+Barcelona,41.3850639,2.1734035,Spain,Europe
+Bilbao,43.2630126,-2.9349852,Spain,Europe
+Córdoba,37.8881751,-4.7793835,Spain,Europe
+León,21.1250077,-101.6859605,Spain,Europe
+Madrid,40.4167754,-3.7037902,Spain,Europe
+Malaga,36.7212737,-4.4213988,Spain,Europe
+Murcia,37.9922399,-1.1306544,Spain,Europe
+Palma,39.5696005,2.6501603,Spain,Europe
+Seville,37.3890924,-5.9844589,Spain,Europe
+Spain,40.463667,-3.74922,Spain,Europe
+Valencia,28.5229956,-81.4634245,Spain,Europe
+Zaragoza,41.6488696,-0.8897421,Spain,Europe
+Geneva,46.2043907,6.1431577,Switzerland,Europe
+Lausanne,46.5196535,6.6322734,Switzerland,Europe
+Switzerland,46.818188,8.22751199999999,Switzerland,Europe
+Zurich,47.3768866,8.541694,Switzerland,Europe
+Belarus,53.709807,27.953389,Ukraine,Europe
+Dnipropetrovsk,48.464717,35.046183,Ukraine,Europe
+Donetsk,48.015883,37.80285,Ukraine,Europe
+Kharkiv,49.9935,36.230383,Ukraine,Europe
+Kyiv,50.4501,30.5234,Ukraine,Europe
+Lviv,49.839683,24.029717,Ukraine,Europe
+Rostov-on-Don,47.2357137,39.701505,Ukraine,Europe
+Ukraine,48.379433,31.16558,Ukraine,Europe
+Zaporozhye,47.8388,35.139567,Ukraine,Europe
+Birmingham,33.5206608,-86.8024899999999,England UK,Europe (for now)
+Blackpool,53.8175053,-3.0356748,England UK,Europe (for now)
+Bournemouth,50.719164,-1.880769,England UK,Europe (for now)
+Brighton,50.82253,-0.137163,England UK,Europe (for now)
+Bristol,51.454513,-2.58791,England UK,Europe (for now)
+Hull,53.7456709,-0.3367413,England UK,Europe (for now)
+Leeds,53.8007554,-1.5490774,England UK,Europe (for now)
+Liverpool,53.4083714,-2.9915726,England UK,Europe (for now)
+London,51.5073509,-0.1277583,England UK,Europe (for now)
+Manchester,53.4807593,-2.2426305,England UK,Europe (for now)
+Newcastle,54.978252,-1.61778,England UK,Europe (for now)
+Nottingham,52.9547831999999,-1.1581086,England UK,Europe (for now)
+Sheffield,53.3811289999999,-1.470085,England UK,Europe (For now)
+Stoke-on-Trent,53.002668,-2.179404,England UK,Europe (For now)
+Swansea,51.62144,-3.94364599999999,England UK,Europe (For now)
+Cork,51.8968917,-8.4863157,Ireland UK,Europe (for now)
+Dublin,53.3498053,-6.2603097,Ireland UK,Europe (for now)
+Galway,53.270668,-9.0567905,Ireland UK,Europe (for now)
+Ireland,53.1423672,-7.69205359999999,Ireland UK,Europe (for now)
+Edinburgh,55.953252,-3.188267,Scotland UK,Europe (for now)
+Glasgow,55.864237,-4.251806,Scotland UK,Europe (for now)
+United Kingdom,55.378051,-3.435973,UK,Europe (For now)
+Cardiff,51.481581,-3.17909,Wales UK,Europe (for now)
+Bahrain,26.0667,50.5577,Bahrain,Middle East
+Dubai,25.2048493,55.2707828,Dubai,Middle East
+Haifa,32.7940463,34.989571,Israel,Middle East
+Israel,31.046051,34.851612,Israel,Middle East
+Jerusalem,31.768319,35.21371,Israel,Middle East
+Tel Aviv,32.0852999,34.7817675999999,Israel,Middle East
+Amman,31.9453666,35.9283716,Jordan,Middle East
+Jordan,30.585164,36.238414,Jordan,Middle East
+Oman,21.4735329,55.975413,Jordan,Middle East
+Kuwait,29.31166,47.481766,Kuwait,Middle East
+Lebanon,33.854721,35.862285,Lebanon,Middle East
+Muscat,23.58589,58.4059227,Oman,Middle East
+Faisalabad,31.4187142,73.0791072999999,Pakistan,Middle East
+Multan,30.1983806999999,71.4687028,Pakistan,Middle East
+Qatar,25.354826,51.183884,Qatar,Middle East
+Ahsa,22.2954496,50.6793759,Saudi Arabia,Middle East
+Dammam,26.3926665,49.9777136,Saudi Arabia,Middle East
+Jeddah,21.2854067,39.2375507,Saudi Arabia,Middle East
+Mecca,21.3890824,39.8579118,Saudi Arabia,Middle East
+Medina,24.5246542,39.5691841,Saudi Arabia,Middle East
+Riyadh,24.7135517,46.6752957,Saudi Arabia,Middle East
+Saudi Arabia,23.885942,45.079162,Saudi Arabia,Middle East
+Adana,36.9914194,35.3308285,Turkey,Middle East
+Ankara,39.9333635,32.8597419,Turkey,Middle East
+Antalya,36.8968908,30.7133233,Turkey,Middle East
+Bursa,40.1885281,29.0609636,Turkey,Middle East
+Diyarbakır,37.9249733,40.2109826,Turkey,Middle East
+Eskişehir,39.7667061,30.5256310999999,Turkey,Middle East
+Gaziantep,37.065953,37.37811,Turkey,Middle East
+Istanbul,41.0082376,28.9783589,Turkey,Middle East
+Izmir,38.423734,27.142826,Turkey,Middle East
+Kayseri,38.720489,35.482597,Turkey,Middle East
+Konya,37.8746429,32.4931554,Turkey,Middle East
+Mersin,36.8121041,34.6414811,Turkey,Middle East
+Turkey,38.963745,35.243322,Turkey,Middle East
+Abu Dhabi,24.453884,54.3773438,UAE,Middle East
+Sharjah,25.3462553,55.4209317,UAE,Middle East
+United Arab Emirates,23.424076,53.847818,UAE,Middle East
+Algeria,28.033886,1.659626,Algeria,North Africa
+Algiers,36.753768,3.0587561,Algeria,North Africa
+Egypt,26.820553,30.802498,Egypt,North Africa
+Giza,30.0130557,31.2088526,Egypt,North Africa
+Calgary,51.0486151,-114.0708459,Alberta, Canada,North America
+Edmonton,53.544389,-113.4909267,Alberta, Canada,North America
+Mesa,33.4151843,-111.8314724,Arizona US,North America
+Phoenix,33.4483771,-112.0740373,Arizona US,North America
+Tucson,32.2217429,-110.926479,Arizona US,North America
+Vancouver,49.2827291,-123.1207375,British Columbia, Canada,North America
+Fresno,36.7468422,-119.7725868,California US,North America
+Long Beach,33.7700504,-118.1937395,California US,North America
+Los Angeles,34.0522342,-118.2436849,California US,North America
+Sacramento,38.5815719,-121.4943996,California US,North America
+San Diego,32.715738,-117.1610838,California US,North America
+San Francisco,37.7749295,-122.4194155,California US,North America
+San Jose,37.3382082,-121.8863286,California US,North America
+Canada,56.130366,-106.346771,Canada,North America
+Winnipeg,49.895136,-97.1383743999999,Canada,North America
+Colorado Springs,38.8338816,-104.8213634,Colorado US,North America
+Denver,39.7392358,-104.990251,Colorado US,North America
+New Haven,41.308274,-72.9278835,CT US,North America
+Washington,47.7510741,-120.7401386,D.C. US,North America
+Jacksonville,30.3321838,-81.6556509999999,Florida US,North America
+Miami,25.7616798,-80.1917902,Florida US,North America
+Orlando,28.5383355,-81.3792365,Florida US,North America
+Tallahassee,30.4382559,-84.2807328999999,Florida US,North America
+Tampa,27.950575,-82.4571776,Florida US,North America
+Atlanta,33.7489954,-84.3879824,Georgia US,North America
+Honolulu,21.3069444,-157.8583333,Hawaii US,North America
+Chicago,41.8781136,-87.6297982,Illinois US,North America
+Indianapolis,39.768403,-86.158068,Indiana US,North America
+Kansas City,39.0997265,-94.5785667,Kansas US,North America
+Louisville,38.2526647,-85.7584557,Kentucky US,North America
+Baton Rouge,30.4582829,-91.1403196,Louisiana US,North America
+New Orleans,29.9510657999999,-90.0715323,Louisiana US,North America
+Baltimore,39.2903848,-76.6121893,Maryland US,North America
+Boston,42.3600825,-71.0588801,Massachusetts US,North America
+Plymouth,41.9584457,-70.6672621,Massachusetts US,North America
+Acapulco,16.8531086,-99.8236533,Mexico,North America
+Aguascalientes,21.8852562,-102.2915677,Mexico,North America
+Chihuahua,28.6329957,-106.0691004,Mexico,North America
+Ciudad Juarez,31.6903638,-106.4245478,Mexico,North America
+CuliacÃ¡n,24.8090649,-107.3940117,Mexico,North America
+Ecatepec de Morelos,19.601841,-99.0506743999999,Mexico,North America
+Guadalajara,20.6596988,-103.3496092,Mexico,North America
+Hermosillo,29.0729673,-110.9559192,Mexico,North America
+Mérida,20.9673702,-89.5925857,Mexico,North America
+Mexicali,32.6245389,-115.4522623,Mexico,North America
+Mexico,23.634501,-102.552784,Mexico,North America
+Mexico City,19.4326077,-99.133208,Mexico,North America
+Monterrey,25.6866142,-100.3161126,Mexico,North America
+Morelia,19.7059504,-101.1949825,Mexico,North America
+Naucalpan de JuÃ¡rez,19.4630841,-99.245302,Mexico,North America
+Nezahualcóyotl,19.3994934,-98.9896643,Mexico,North America
+Puebla,19.0412967,-98.2061995999999,Mexico,North America
+QuerÃ©taro,20.5888184,-100.3898876,Mexico,North America
+Saltillo,25.43208,-100.9836611,Mexico,North America
+San Luis PotosÃ­,22.1565651,-100.9854628,Mexico,North America
+Tijuana,32.5149469,-117.0382471,Mexico,North America
+Toluca,19.2826098,-99.6556653,Mexico,North America
+Zapopan,20.6719563,-103.416501,Mexico,North America
+Detroit,42.331427,-83.0457538,Michigan US,North America
+Minneapolis,44.977753,-93.2650108,Minnesotta US,North America
+Jackson,32.2987573,-90.1848103,Mississippi US,North America
+St. Louis,38.6270025,-90.1994041999999,Missouri US,North America
+Omaha,41.2523634,-95.9979882999999,Nebraska US,North America
+Las Vegas,36.1699412,-115.1398296,Nevada US,North America
+Portsmouth,43.0717552,-70.7625532,New Hampshire US,North America
+Albuquerque,35.0853336,-106.6055534,New Mexico USA,North America
+New York,40.7127837,-74.0059413,New York US,North America
+Charlotte,35.2270869,-80.8431267,North Carolina US,North America
+Greensboro,36.0726354,-79.7919754,North Carolina US,North America
+Raleigh,35.7795897,-78.6381787,North Carolina US,North America
+Cincinnati,39.1031182,-84.5120196,Ohio US,North America
+Cleveland,41.49932,-81.6943605,Ohio US,North America
+Columbus,39.9611755,-82.9987941999999,Ohio US,North America
+Oklahoma City,35.4675602,-97.5164276,OKlahoma US,North America
+Ottawa,45.4215296,-75.6971930999999,Ontario,Canada,North America
+Toronto,43.653226,-79.3831843,Ontario,Canada,North America
+Portland,45.5230622,-122.6764816,Oregon US,North America
+Harrisburg,40.2731911,-76.8867008,Pennsylvania US,North America
+Philadelphia,39.9525839,-75.1652215,Pennsylvania US,North America
+Pittsburgh,40.4406247999999,-79.9958864,Pennsylvania US,North America
+Montreal,45.5016889,-73.567256,Qubec,Canada,North America
+Quebec,46.8138783,-71.2079809,Quebec,Canada,North America
+Providence,41.8239891,-71.4128343,Rhode Island US,North America
+Nashville,36.1626638,-86.7816016,Tennesee US,North America
+Memphis,35.1495343,-90.0489801,Tennessee US,North America
+Austin,30.267153,-97.7430608,Texas US,North America
+Dallas-Ft. Worth,32.7766642,-96.7969878999999,Texas US,North America
+El Paso,31.7618778,-106.4850217,Texas US,North America
+Houston,29.7604267,-95.3698028,Texas US,North America
+San Antonio,29.4241219,-98.4936281999999,Texas US,North America
+United States,37.09024,-95.712891,US,North America
+Salt Lake City,40.7607793,-111.8910474,Utah US,North America
+Alexandria,31.2000924,29.9187387,Virginia US,North America
+Norfolk,36.8507689,-76.2858725999999,Virginia US,North America
+Richmond,37.5407246,-77.4360481,Virginia US,North America
+Virginia Beach,36.8529263,-75.9779849999999,Virginia US,North America
+Seattle,47.6062095,-122.3320708,Washington US,North America
+Milwaukee,43.0389025,-87.9064736,Wisconsin US,North America
+Gothenburg,57.70887,11.97456,Sweden,Norther Europe
+Norway,60.4720239999999,8.46894599999999,Norway,Northern Europe
+Oslo,59.9138688,10.7522454,Norway,Northern Europe
+Stockholm,59.3293234999999,18.0685808,Sweden,Northern Europe
+Sweden,60.128161,18.643501,Sweden,Northern Europe
+Pasig,14.5763768,121.0851097,Philippines,South Aisa
+Argentina,-38.416097,-63.6166719999999,Argentina,South America
+Buenos Aires,-34.6036844,-58.3815591,Argentina,South America
+Mendoza,-32.8894587,-68.8458386,Argentina,South America
+Rosario,-32.9442426,-60.6505388,Argentina,South America
+Belo Horizonte,-19.9166813,-43.9344931,Brazil,South America
+BrasÃ­lia,-15.7942287,-47.8821658,Brazil,South America
+Brazil,-14.235004,-51.92528,Brazil,South America
+Campinas,-22.9099384,-47.0626332,Brazil,South America
+Curitiba,-25.4289541,-49.267137,Brazil,South America
+Fortaleza,-3.7318616,-38.5266704,Brazil,South America
+GoiÃ¢nia,-16.6868912,-49.2647943,Brazil,South America
+Guarulhos,-23.4543148,-46.5336521,Brazil,South America
+Manaus,-3.1190275,-60.0217314,Brazil,South America
+Porto Alegre,-30.0346471,-51.2176584,Brazil,South america
+Recife,-8.0578381,-34.8828969,Brazil,South america
+Rio de Janeiro,-22.9068467,-43.1728965,Brazil,South America
+SÃ£o LuÃ­s,-2.5391099,-44.2829045999999,Brazil,South america
+SÃ£o Paulo,-23.5505199,-46.6333093999999,Brazil,South America
+Chile,-35.675147,-71.542969,Chile,South America
+Concepcion,-36.8201352,-73.0443904,Chile,South America
+Santiago,-33.4488897,-70.6692655,Chile,South America
+Valparaiso,41.4730948,-87.0611412,Chile,South America
+Barranquilla,11.0041072,-74.8069812999999,Colombia,South America
+BogotÃ¡,4.71098859999999,-74.072092,Colombia,South America
+Cali,3.4516467,-76.5319854,Colombia,South America
+Colombia,4.570868,-74.297333,Colombia,South America
+Medellí­n,6.244203,-75.5812119,Colombia,South America
+Ecuador,-1.831239,-78.1834059999999,Ecuador,South America
+Guayaquil,-2.1709979,-79.9223592,Ecuador,South America
+Salvador,13.794185,-88.89653,El Slavador,South america
+Lima,-12.046374,-77.0427934,Peru,South America
+Peru,-9.189967,-75.015152,Peru,South America
+Barquisimeto,10.0677719,-69.3473509,Venezuela,South America
+Ciudad Guayana,8.3663119,-62.6496813,Venezuela,South America
+Maracaibo,10.6544509,-71.7147951,Venezuela,South America
+Maracay,10.2441931,-67.6066164,Venezuela,South America
+Maturí­n,9.7333906,-63.1914317,Venezuela,South America
+Turmero,10.2145621,-67.4874107,Venezuela,South America
+Venezuela,6.42375,-66.58973,Venezuela,South America
+Caracas,10.4805937,-66.9036062999999,Venezuella,South America
+Ahmedabad,23.022505,72.5713621,India,South Asia
+Amritsar,31.6339793,74.8722642,India,South Asia
+Bangalore,12.9715987,77.5945627,India,South Asia
+Bhopal,23.2599333,77.412615,India,South Asia
+Chennai,13.0826802,80.2707184,India,South Asia
+Hyderabad,17.385044,78.486671,India,South Asia
+India,20.593684,78.96288,India,South Asia
+Mumbai,19.0759837,72.8776559,India,South Asia
+Pune,18.5204303,73.8567437,India,South Asia
+Bekasi,-6.2382699,106.9755726,Indonesia,South Asia
+Depok,-6.4024844,106.7942405,Indonesia,South Asia
+Makassar,-5.14766509999999,119.4327314,Indonesia,South Asia
+Medan,3.5951956,98.6722227,Indonesia,South Asia
+Palembang,-2.9760735,104.7754307,Indonesia,South Asia
+Semarang,-7.0051453,110.4381254,indonesia,South Asia
+Surabaya,-7.2574719,112.7520883,Indonesia,South Asia
+Tangerang,-6.2023936,106.6527099,Indonesia,South Asia
+Hulu Langat,2.9936432,101.7891995,Malaysia,South Asia
+Ipoh,4.597479,101.090106,Malaysia,South Asia
+Johor Bahru,1.492659,103.7413591,Malaysia,South Asia
+Kajang,2.993518,101.7874058,Malaysia,South Asia
+Klang,3.044917,101.4455621,Malaysia,South Asia
+Kuala Lumpur,3.139003,101.686855,Malaysia,South Asia
+Petaling,3.1846237,101.5359674,Malaysia,South Asia
+Karachi,24.8614622,67.0099388,Pakistan,South Asia
+Lahore,31.5546060999999,74.3571581,Pakistan,South Asia
+Pakistan,30.375321,69.3451159999999,Pakistan,South Asia
+Cagayan de Oro,8.4542363,124.6318977,Philippines,South Asia
+Calocan,14.7565784,121.0449768,Philippines,South Asia
+Cebu City,10.3156992,123.8854366,Philippines,South Asia
+Davao City,7.190708,125.455341,Philippines,South Asia
+Taguig,14.5176184,121.0508645,Philippines,South asia
+Zamboanga City,6.9214424,122.0790267,Philippines,South Asia
+Can Tho,10.0451618,105.7468535,Vietnam,South Asia
+Da Nang,16.0544068,108.2021667,Vietnam,South Asia
+Hai Phong,20.8449115,106.6880841,Vietnam,South Asia
+Bandung,-6.9174639,107.6191228,Indonesia,South Asia 
+Antipolo,14.6254827,121.1244847,Philippines,South Asia 
+Indonesia,-0.789275,113.921327,Indonesia,South East Asia
+Jakarta,-6.1744651,106.822745,Indonesia,South East Asia
+Malaysia,4.210484,101.975766,Malaysia,South East Asia
+Singapore,1.352083,103.819836,Singapore,South East Asia
+Bangkok,13.7563309,100.5017651,Thailand,South East Asia
+Thailand,15.870032,100.992541,Thailand,South East Asia
+Hanoi,21.0277644,105.8341598,Vietnam,South East Asia
+Ho Chi Minh City,10.8230989,106.6296638,Vietnam,South East Asia
+Vietnam,14.058324,108.277199,Vietnam,South East Asia
+Athens,37.9838096,23.7275388,Greece,Southern Europe
+Greece,39.074208,21.824312,Greece,Southern Europe
+Worldwide,43.8169837,-79.532157,Worldwide,Worldwide
+Belém,39.9947481,-83.0202978,,
