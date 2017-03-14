@@ -18,29 +18,37 @@ def main():
     #print('Hello world.')
     wp = Client(url, username, password)
     #wp.call(GetPosts())
-    print(wp.call(GetUserInfo()))
+    #print(wp.call(GetUserInfo()))
 
     #file upload
     # set to the path to your file
     filename = 'regions-trending-topics-17-2017-03-08.csv'
+    content_string = '<table>'
 
-    # prepare metadata
-    data = {
-        'name': 'March 8 Trends',
-        'type': 'text/csv',  # mimetype
-    }
+    with open(filename, 'r') as tsv_file:
+        for row in tsv_file:
+            content_string += '<tr>'
+            cells = row.split('\t')
+            name = cells[0]
+            hashtag = cells[2]
+            lat = cells[6]
+            lon = cells[7]
+            newrow = '<td>' + name + '</td><td>' + hashtag + '</td><td>' + lat + '</td><td>' + lon + '</td>'
+            #for cell in cells:
+            #    content_string += '<td>'
+            #    content_string += cell
+            #    content_string += '</td>'
+            content_string += newrow 
+            content_string += '</tr>'
+            #print(cells)
 
-    # read the binary file and let the XMLRPC library encode it into base64
-    #with open(filename, 'rb') as csv_file:
-    #    data['bits'] = xmlrpc_client.Binary(csv_file.read())
-
-    response = wp.call(media.UploadFile(data))
-    print(response)
-
+    content_string += '</table>'
+    #print(content_string)
 
     post = WordPressPost()
-    post.title = 'Testing tables'
-    post.content = '<table><tr><td>ROW1 COL1 CONTENT</td><td>ROW1 COL2 CONTENT</td><td>ROW1 COL3 CONTENT</td></tr><tr><td>ROW2 COL1 CONTENT</td><td>ROW2 COL2 CONTENT</td><td>ROW2 COL3 CONTENT</td></tr><tr><td>ROW3 COL1 CONTENT</td><td>ROW3 COL2 CONTENT</td><td>ROW3 COL3 CONTENT</td></tr></table>'
+    post.title = 'Trending Topics Mini Table'
+    #post.content = '<table><tr><td>ROW1 COL1 CONTENT</td><td>ROW1 COL2 CONTENT</td><td>ROW1 COL3 CONTENT</td></tr><tr><td>ROW2 COL1 CONTENT</td><td>ROW2 COL2 CONTENT</td><td>ROW2 COL3 CONTENT</td></tr><tr><td>ROW3 COL1 CONTENT</td><td>ROW3 COL2 CONTENT</td><td>ROW3 COL3 CONTENT</td></tr></table>'
+    post.content = content_string
     post.terms_names = {
       'post_tag': ['test', 'tables'],
       'category': ['Introductions', 'Tests']
