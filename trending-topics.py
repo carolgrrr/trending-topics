@@ -254,8 +254,9 @@ def add_regions(original_file, region_file):
 
 
 def main():
+    settings = 'settings.cfg'
     config = configparser.ConfigParser()
-    config.read('settings.cfg')
+    config.read(settings)
     filter_term = config.get('files', 'filter_term')
     prefix = config.get('files', 'prefix')
     region_filename = config.get('files', 'regions')
@@ -275,9 +276,11 @@ def main():
     extract_topics(all_topics, filtered_topics, filter_term)
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     email_file(config, filtered_topics_with_regions)
+    post_report_to_wordpress(settings, filtered_topics_with_regions)
     get_top_topics(all_topics)
     top_topics_with_regions = add_regions(top_topics, region_filename)
     email_file(config, top_topics_with_regions)
+    post_report_to_wordpress(settings, top_topics_with_regions)
     
 if __name__ == '__main__':
     main()
