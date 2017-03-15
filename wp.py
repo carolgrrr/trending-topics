@@ -17,6 +17,23 @@ def create_wordpress_client(settings_filename):
 
     return client
 
+def generate_post_content_string(report_filename):
+    content_string = '<table>'
+
+    with open(filename, 'r') as tsv_file:
+        for row in tsv_file:
+            cells = row.split('\t')
+            region = cells[9]
+            nation = cells[8]
+            location = cells[0]
+            trend = cells[2]
+            count = cells[5]
+            table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + count + '</td></tr>'
+            content_string += table_row
+
+    content_string += '</table>'
+    return content_string
+
 
 def main():
     wp = create_wordpress_client('settings.cfg')
