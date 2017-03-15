@@ -5,18 +5,21 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 import configparser
 
-
-def main():
+def create_wordpress_client(settings_filename):
     config = configparser.ConfigParser()
-    config.read('settings.cfg')
+    config.read(settings_filename)
 
     url = config.get('wordpress', 'url')
     username = config.get('wordpress', 'user')
     password = config.get('wordpress', 'pass')
-    #password = 'RHr&v9LbwJnyesdD0m$1IH5i'
 
-    #print('Hello world.')
-    wp = Client(url, username, password)
+    client = Client(url, username, password)
+
+    return client
+
+
+def main():
+    wp = create_wordpress_client('settings.cfg')
     #wp.call(GetPosts())
     #print(wp.call(GetUserInfo()))
 
