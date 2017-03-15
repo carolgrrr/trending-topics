@@ -20,7 +20,7 @@ def create_wordpress_client(settings_filename):
 def generate_post_content_string(report_filename):
     content_string = '<table>'
 
-    with open(filename, 'r') as tsv_file:
+    with open(report_filename, 'r') as tsv_file:
         for row in tsv_file:
             cells = row.split('\t')
             region = cells[9]
@@ -34,23 +34,25 @@ def generate_post_content_string(report_filename):
     content_string += '</table>'
     return content_string
 
+def post_report_to_wordpress(settings_filename, report_filename):
+    wp = create_wordpress_client(settings_filename)
 
-def main():
-    wp = create_wordpress_client('settings.cfg')
-
-    filename = 'regions-trending-topics-17-2017-03-08.csv'
+    filename = report_filename
     content_string = generate_post_content_string(filename)
+    title = filename[:-4]
 
     post = WordPressPost()
-    post.title = 'Trending Topics Mini Table'
-    #post.content = '<table><tr><td>ROW1 COL1 CONTENT</td><td>ROW1 COL2 CONTENT</td><td>ROW1 COL3 CONTENT</td></tr><tr><td>ROW2 COL1 CONTENT</td><td>ROW2 COL2 CONTENT</td><td>ROW2 COL3 CONTENT</td></tr><tr><td>ROW3 COL1 CONTENT</td><td>ROW3 COL2 CONTENT</td><td>ROW3 COL3 CONTENT</td></tr></table>'
+    post.title = title
     post.content = content_string
-    post.terms_names = {
-      'post_tag': ['test', 'tables'],
-      'category': ['Introductions', 'Tests']
-    }
+
     wp.call(NewPost(post))
-    print('end.')
+    print('posted.')
+
+
+def main():
+    settings = 'settings.cfg'
+    report = 'regions-trending-topics-17-2017-03-08.csv'
+    post_report_to_wordpress(settings, report)
 
 if __name__ == '__main__':
 	main()
