@@ -51,8 +51,10 @@ def post_report_to_wordpress(settings_filename, report_filename):
 
 def main():
     settings = 'settings.cfg'
-    report = 'regions-trending-topics-17-2017-03-08.csv'
-    post_report_to_wordpress(settings, report)
+    first_report = 'regions-and-top-trending-topics-2017-03-15.csv'
+    post_report_to_wordpress(settings, first_report)
+    second_report = 'regions-and-trending-topics-17-2017-03-15.csv'
+    post_report_to_wordpress(settings, second_report)
 
 if __name__ == '__main__':
 	main()
