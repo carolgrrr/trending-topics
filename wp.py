@@ -37,33 +37,9 @@ def generate_post_content_string(report_filename):
 
 def main():
     wp = create_wordpress_client('settings.cfg')
-    #wp.call(GetPosts())
-    #print(wp.call(GetUserInfo()))
 
-    #file upload
-    # set to the path to your file
     filename = 'regions-trending-topics-17-2017-03-08.csv'
-    content_string = '<table>'
-
-    with open(filename, 'r') as tsv_file:
-        for row in tsv_file:
-            content_string += '<tr>'
-            cells = row.split('\t')
-            name = cells[0]
-            hashtag = cells[2]
-            lat = cells[6]
-            lon = cells[7]
-            newrow = '<td>' + name + '</td><td>' + hashtag + '</td><td>' + lat + '</td><td>' + lon + '</td>'
-            #for cell in cells:
-            #    content_string += '<td>'
-            #    content_string += cell
-            #    content_string += '</td>'
-            content_string += newrow 
-            content_string += '</tr>'
-            #print(cells)
-
-    content_string += '</table>'
-    #print(content_string)
+    content_string = generate_post_content_string(filename)
 
     post = WordPressPost()
     post.title = 'Trending Topics Mini Table'
