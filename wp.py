@@ -22,7 +22,7 @@ def generate_post_content_string(report_filename):
     content_string = '<table>'
 
     with fileinput.input(files=report_filename) as tsv_file:
-        sorted_data = sort_by_region(tsv_file)
+        sorted_data = sort_by_trend_count(tsv_file)
 
     for cells in sorted_data:
         #cells = row.split('\t')
@@ -51,7 +51,7 @@ def post_report_to_wordpress(settings_filename, report_filename):
     wp.call(NewPost(post))
     print('posted.')
 
-def sort_by_region(tsv):
+def sort_by_trend_count(tsv):
     rows = []
 
     for row in tsv:
