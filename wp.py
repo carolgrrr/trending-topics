@@ -4,6 +4,7 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 import configparser
+import fileinput
 
 def create_wordpress_client(settings_filename):
     config = configparser.ConfigParser()
@@ -20,16 +21,18 @@ def create_wordpress_client(settings_filename):
 def generate_post_content_string(report_filename):
     content_string = '<table>'
 
-    with open(report_filename, 'r') as tsv_file:
-        for row in tsv_file:
-            cells = row.split('\t')
-            region = cells[9]
-            nation = cells[8]
-            location = cells[0]
-            trend = cells[2]
-            count = cells[5]
-            table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + count + '</td></tr>'
-            content_string += table_row
+    with fileinput.input(files=report_filename) as tsv_file:
+        sorted_data = sort_by_region(tsv_file)
+
+    for cells in sorted_data:
+        #cells = row.split('\t')
+        region = cells[9]
+        nation = cells[8]
+        location = cells[0]
+        trend = cells[2]
+        count = cells[5]
+        table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+        content_string += table_row
 
     content_string += '</table>'
     return content_string
@@ -48,12 +51,30 @@ def post_report_to_wordpress(settings_filename, report_filename):
     wp.call(NewPost(post))
     print('posted.')
 
+def sort_by_region(tsv):
+    rows = []
+
+    for row in tsv:
+        if not fileinput.isfirstline():
+            cells = row.split('\t')
+            rows.append(cells)
+
+    for row in rows:
+        #if row == rows[0]:
+        #    continue
+        row[5] = int(row[5])
+
+    # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
+    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[0], x[8], x[9]))
+    return sorted_rows
+
+
 
 def main():
     settings = 'settings.cfg'
-    first_report = 'regions-and-top-trending-topics-2017-03-15.csv'
+    first_report = 'regions-and-top-trending-topics-2017-03-16-test.csv'
     post_report_to_wordpress(settings, first_report)
-    second_report = 'regions-and-trending-topics-17-2017-03-15.csv'
+    second_report = 'regions-and-trending-topics-17-2017-03-16-test.csv'
     post_report_to_wordpress(settings, second_report)
 
 if __name__ == '__main__':
