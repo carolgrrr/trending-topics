@@ -21,19 +21,19 @@ Pretoria,-25.7478676,28.2292712,South Africa,Africa
 South Africa,-30.559482,22.937506,South Africa,Africa
 Soweto,-26.2485377,27.8540323,South Africa,Africa
 Las Palmas,28.1235459,-15.4362574,Spain,Africa
-Delhi,28.7040592,77.1024901999999,India,Asia
-Indore,22.7195687,75.8577258,India,Asia
-Jaipur,26.9124336,75.7872709,India,Asia
-Kanpur,26.449923,80.3318736,India,Asia
-Kolkata,22.572646,88.363895,India,Asia
-Lucknow,26.8466937,80.9461659999999,India,Asia
-Nagpur,21.1458004,79.0881546,India,Asia
-Patna,25.5940947,85.1375645,India,Asia
-Rajkot,22.3038945,70.8021598999999,India,Asia
-Ranchi,23.3440997,85.309562,India,Asia
-Srinagar,34.0836708,74.7972825,India,Asia
-Surat,21.1702401,72.8310607,India,Asia
-Thane,19.2183307,72.9780897,India,Asia
+Delhi,28.7040592,77.1024901999999,India,South Asia
+Indore,22.7195687,75.8577258,India,South Asia
+Jaipur,26.9124336,75.7872709,India,South Asia
+Kanpur,26.449923,80.3318736,India,South Asia
+Kolkata,22.572646,88.363895,India,South Asia
+Lucknow,26.8466937,80.9461659999999,India,South Asia
+Nagpur,21.1458004,79.0881546,India,South Asia
+Patna,25.5940947,85.1375645,India,South Asia
+Rajkot,22.3038945,70.8021598999999,India,South Asia
+Ranchi,23.3440997,85.309562,India,South Asia
+Srinagar,34.0836708,74.7972825,India,South Asia
+Surat,21.1702401,72.8310607,India,South Asia
+Thane,19.2183307,72.9780897,India,South Asia
 Chiba,35.6050574,140.1233063,Japan,Asia
 Fukuoka,33.5903547,130.4017155,Japan,Asia
 Hamamatsu,34.7108344,137.7261258,Japan,Asia
@@ -425,7 +425,7 @@ Depok,-6.4024844,106.7942405,Indonesia,South Asia
 Makassar,-5.14766509999999,119.4327314,Indonesia,South Asia
 Medan,3.5951956,98.6722227,Indonesia,South Asia
 Palembang,-2.9760735,104.7754307,Indonesia,South Asia
-Semarang,-7.0051453,110.4381254,indonesia,South Asia
+Semarang,-7.0051453,110.4381254,Indonesia,South Asia
 Surabaya,-7.2574719,112.7520883,Indonesia,South Asia
 Tangerang,-6.2023936,106.6527099,Indonesia,South Asia
 Hulu Langat,2.9936432,101.7891995,Malaysia,South Asia
@@ -461,4 +461,4 @@ Vietnam,14.058324,108.277199,Vietnam,South East Asia
 Athens,37.9838096,23.7275388,Greece,Southern Europe
 Greece,39.074208,21.824312,Greece,Southern Europe
 Worldwide,43.8169837,-79.532157,Worldwide,Worldwide
-Belém,39.9947481,-83.0202978,,
+Belém,39.9947481,-83.0202978,Brazil,South America
