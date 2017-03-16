@@ -65,7 +65,7 @@ def sort_by_trend_count(tsv):
         row[5] = int(row[5])
 
     # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[0], x[8], x[9]))
+    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
     return sorted_rows
 
 
