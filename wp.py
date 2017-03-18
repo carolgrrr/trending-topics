@@ -84,7 +84,7 @@ def sort_by_location(tsv):
         row[5] = int(row[5])
 
     # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-    sorted_rows = sorted(rows, key = lambda x: (-x[9], x[8], x[0], x[2], -x[5]))
+    sorted_rows = sorted(rows, key = lambda x: (x[9], x[8], x[0], x[2], -x[5]))
     return sorted_rows
 
 
