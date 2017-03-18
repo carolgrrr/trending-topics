@@ -12,7 +12,6 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 import fileinput
 
-
 def get_twitter(config_file):
     """ Read the config_file and construct an instance of TwitterAPI.
     Args:
@@ -80,12 +79,19 @@ def extract_topics(infile, outfile, keyword):
                 topics.append(row)
 
     topic_counter = count_topics(infile)
+
+    counted_topics = []
+    for topic in topics:
+        count = topic_counter[topic[2]]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        counted_topics.append(row)
+
+    sorted_topics = sorted(counted_topics, key=lambda x: (x[5], x[2]), reverse=True)
     
     with open(outfile, 'w') as tsv_outfile:
-        tsv_outfile.write('Location Name\tWOE ID\tName\tURL\tEvents\tPromoted?\tQuery\tCount\n')
-        for topic in topics:
-            count = topic_counter[topic[2]]
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6],count)
+        tsv_outfile.write('Location Name\tWOE ID\tName\tEvents\tPromoted?\tCount\n')
+        for topic in sorted_topics:
+            row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
             tsv_outfile.write(row)
 
     print('topics filtered.')
@@ -197,11 +203,11 @@ def add_regions(original_file, region_file):
         tsv_file.write('Location\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
 
         for topic in topics_with_regions:
-            #print(topic)
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
             
     print("regions added.")
+
 
 def create_wordpress_client(settings_filename):
     config = configparser.ConfigParser()
@@ -286,6 +292,7 @@ def sort_by_location(tsv):
 
 
 
+
 def main():
     settings = 'settings.cfg'
     config = configparser.ConfigParser()
@@ -306,17 +313,20 @@ def main():
     region_topics = 'regions-and-' + filtered_topics
     region_top_topics = 'regions-and-' + top_topics
 
-    get_trending_topics(all_topics, place_ids, places, twitter)
+
+    #get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
-    add_regions(filtered_topics, region_filename)
-    email_file(config, region_topics)
-    post_report_to_wordpress(settings, region_topics, 'trend')
-    post_report_to_wordpress(settings, region_topics, 'location' )
+
+    filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
+    email_file(config, filtered_topics_with_regions)
+    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
     get_top_topics(all_topics)
-    add_regions(top_topics, region_filename)
-    email_file(config, region_top_topics)
-    post_report_to_wordpress(settings, region_top_topics, 'trend')
-    post_report_to_wordpress(settings, region_top_topics, 'location')
+    top_topics_with_regions = add_regions(top_topics, region_filename)
+    email_file(config, top_topics_with_regions)
+    post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
+    post_report_to_wordpress(settings, top_topics_with_regions, 'location')
+
     
 if __name__ == '__main__':
     main()
