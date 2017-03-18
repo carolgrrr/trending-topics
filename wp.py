@@ -18,14 +18,16 @@ def create_wordpress_client(settings_filename):
 
     return client
 
-def generate_post_content_string(report_filename):
+def generate_post_content_string(report_filename, sort_by):
     content_string = '<table>'
 
     with fileinput.input(files=report_filename) as tsv_file:
-        sorted_data = sort_by_trend_count(tsv_file)
+        if sort_by == 'trend'
+            sorted_data = sort_by_trend_count(tsv_file)
+        elif sort_by == 'location'
+            sorted_data = sort_by_location(tsv_file)
 
     for cells in sorted_data:
-        #cells = row.split('\t')
         region = cells[9]
         nation = cells[8]
         location = cells[0]
@@ -37,15 +39,15 @@ def generate_post_content_string(report_filename):
     content_string += '</table>'
     return content_string
 
-def post_report_to_wordpress(settings_filename, report_filename):
+def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     wp = create_wordpress_client(settings_filename)
 
     filename = report_filename
-    content_string = generate_post_content_string(filename)
+    content_string = generate_post_content_string(filename, sort_by)
     title = filename[:-4]
 
     post = WordPressPost()
-    post.title = title
+    post.title = title + sort_by
     post.content = content_string
 
     wp.call(NewPost(post))
@@ -68,14 +70,33 @@ def sort_by_trend_count(tsv):
     sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
     return sorted_rows
 
+def sort_by_trend_count(tsv):
+    rows = []
+
+    for row in tsv:
+        if not fileinput.isfirstline():
+            cells = row.split('\t')
+            rows.append(cells)
+
+    for row in rows:
+        #if row == rows[0]:
+        #    continue
+        row[5] = int(row[5])
+
+    # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
+    sorted_rows = sorted(rows, key = lambda x: (-x[9], x[8], x[0], x[2], -x[5]))
+    return sorted_rows
+
 
 
 def main():
     settings = 'settings.cfg'
     first_report = 'regions-and-top-trending-topics-2017-03-17-test.csv'
-    post_report_to_wordpress(settings, first_report)
+    post_report_to_wordpress(settings, first_report, 'trend')
+    post_report_to_wordpress(settings, first_report, 'location')
     second_report = 'regions-and-trending-topics-17-2017-03-17-test.csv'
-    post_report_to_wordpress(settings, second_report)
+    post_report_to_wordpress(settings, second_report, 'trend')
+    post_report_to_wordpress(settings, second_report, 'location')
 
 if __name__ == '__main__':
 	main()
