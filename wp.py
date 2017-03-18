@@ -72,9 +72,9 @@ def sort_by_trend_count(tsv):
 
 def main():
     settings = 'settings.cfg'
-    first_report = 'regions-and-top-trending-topics-2017-03-16-test.csv'
+    first_report = 'regions-and-top-trending-topics-2017-03-17-test.csv'
     post_report_to_wordpress(settings, first_report)
-    second_report = 'regions-and-trending-topics-17-2017-03-16-test.csv'
+    second_report = 'regions-and-trending-topics-17-2017-03-17-test.csv'
     post_report_to_wordpress(settings, second_report)
 
 if __name__ == '__main__':
