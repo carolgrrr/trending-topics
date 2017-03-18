@@ -5,6 +5,12 @@ import time
 import yagmail
 from datetime import datetime
 from collections import Counter
+from wordpress_xmlrpc import Client, WordPressPost
+from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
+from wordpress_xmlrpc.methods.users import GetUserInfo
+from wordpress_xmlrpc.compat import xmlrpc_client
+from wordpress_xmlrpc.methods import media, posts
+import fileinput
 
 
 def get_twitter(config_file):
@@ -281,12 +287,13 @@ def sort_by_location(tsv):
 
 
 def main():
+    settings = 'settings.cfg'
     config = configparser.ConfigParser()
-    config.read('settings.cfg')
+    config.read(settings)
     filter_term = config.get('files', 'filter_term')
     prefix = config.get('files', 'prefix')
     region_filename = config.get('files', 'regions')
-    twitter = get_twitter('settings.cfg')
+    twitter = get_twitter(settings)
 
     place_ids = find_place_ids(twitter)
     places = find_places(twitter)
@@ -303,9 +310,13 @@ def main():
     extract_topics(all_topics, filtered_topics, filter_term)
     add_regions(filtered_topics, region_filename)
     email_file(config, region_topics)
+    post_report_to_wordpress(settings, region_topics, 'trend')
+    post_report_to_wordpress(settings, region_topics, 'location' )
     get_top_topics(all_topics)
     add_regions(top_topics, region_filename)
     email_file(config, region_top_topics)
+    post_report_to_wordpress(settings, region_top_topics, 'trend')
+    post_report_to_wordpress(settings, region_top_topics, 'location')
     
 if __name__ == '__main__':
     main()
