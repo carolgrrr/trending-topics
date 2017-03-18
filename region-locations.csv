@@ -57,10 +57,10 @@ Takamatsu,34.3427879,134.046574,Japan,Asia
 Tokyo,35.6894875,139.6917064,Japan,Asia
 Yokohama,35.4437078,139.6380256,Japan,Asia
 Korea,37.6639975999999,127.9784585,Korea,Asia
-Rawalpindi,33.598394,73.0441352,Pakistan,asia
-Makati,14.554729,121.0244452,Philippines,Asia
-Manila,14.5995124,120.9842195,Philippines,Asia
-Philippines,12.879721,121.774017,Philippines,Asia
+Rawalpindi,33.598394,73.0441352,Pakistan,Asia
+Makati,14.554729,121.0244452,Philippines,South Asia
+Manila,14.5995124,120.9842195,Philippines,South Asia
+Philippines,12.879721,121.774017,Philippines,South Asia
 Chelyabinsk,55.1644419,61.4368431,Russia,Asia
 Irkutsk,52.2869740999999,104.3050183,Russia,Asia
 Kazan,55.8304307,49.0660806,Russia,Asia
@@ -93,8 +93,8 @@ Suwon,37.2635727,127.0286009,South Korea,Asia
 Ulsan,35.5383773,129.3113596,South Korea,Asia
 Yongin,37.2410864,127.1775537,South Korea,Asia
 Pekanbaru,0.5070677,101.4477793,Sumatra,Asia
-Quezon City,14.6760413,121.0437003,Philippines,Asia Pacific
-Quito,-0.1806532,-78.4678382,Philippines,Asia Pacific
+Quezon City,14.6760413,121.0437003,Philippines,South Asia
+Quito,-0.1806532,-78.4678382,Philippines,South Asia
 Santo Domingo,18.4860575,-69.9312116999999,Dominican Republic,Caribbean
 Puerto Rico,18.220833,-66.590149,Puerto Rico US,Caribbean
 Dominican Republic,18.735693,-70.162651,Dominican Republic,Carribean
@@ -442,7 +442,7 @@ Cagayan de Oro,8.4542363,124.6318977,Philippines,South Asia
 Calocan,14.7565784,121.0449768,Philippines,South Asia
 Cebu City,10.3156992,123.8854366,Philippines,South Asia
 Davao City,7.190708,125.455341,Philippines,South Asia
-Taguig,14.5176184,121.0508645,Philippines,South asia
+Taguig,14.5176184,121.0508645,Philippines,South Asia
 Zamboanga City,6.9214424,122.0790267,Philippines,South Asia
 Can Tho,10.0451618,105.7468535,Vietnam,South Asia
 Da Nang,16.0544068,108.2021667,Vietnam,South Asia
