@@ -207,6 +207,7 @@ def add_regions(original_file, region_file):
             tsv_file.write(row)
             
     print("regions added.")
+    return reg_filename
 
 
 def create_wordpress_client(settings_filename):
