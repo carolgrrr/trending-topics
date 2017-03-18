@@ -275,12 +275,12 @@ def main():
     #get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
-    email_file(config, filtered_topics_with_regions)
-    post_report_to_wordpress(settings, filtered_topics_with_regions)
+    #email_file(config, filtered_topics_with_regions)
+    #post_report_to_wordpress(settings, filtered_topics_with_regions)
     get_top_topics(all_topics)
     top_topics_with_regions = add_regions(top_topics, region_filename)
-    email_file(config, top_topics_with_regions)
-    post_report_to_wordpress(settings, top_topics_with_regions)
+    #email_file(config, top_topics_with_regions)
+    #post_report_to_wordpress(settings, top_topics_with_regions)
     
 if __name__ == '__main__':
     main()
