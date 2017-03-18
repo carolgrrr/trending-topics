@@ -47,11 +47,11 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     title = filename[:-4]
 
     post = WordPressPost()
-    post.title = title + sort_by
+    post.title = title + '-' + sort_by
     post.content = content_string
 
     wp.call(NewPost(post))
-    print('posted.')
+    print('%s posted.' % post.title)
 
 def sort_by_trend_count(tsv):
     rows = []
