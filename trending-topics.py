@@ -247,14 +247,14 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    title = filename[:-4]
+    title = filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
-    post.title = title + '-' + sort_by
+    post.title = title 
     post.content = content_string
 
     wp.call(NewPost(post))
-    print('%s posted.' % post.title)
+    print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
     rows = []
