@@ -272,7 +272,7 @@ def main():
     top_topics = 'top-' + all_topics
 
 
-    get_trending_topics(all_topics, place_ids, places, twitter)
+    #get_trending_topics(all_topics, place_ids, places, twitter)
     extract_topics(all_topics, filtered_topics, filter_term)
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     email_file(config, filtered_topics_with_regions)
