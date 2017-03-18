@@ -22,9 +22,9 @@ def generate_post_content_string(report_filename, sort_by):
     content_string = '<table>'
 
     with fileinput.input(files=report_filename) as tsv_file:
-        if sort_by == 'trend'
+        if sort_by == 'trend':
             sorted_data = sort_by_trend_count(tsv_file)
-        elif sort_by == 'location'
+        elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
 
     for cells in sorted_data:
@@ -70,7 +70,7 @@ def sort_by_trend_count(tsv):
     sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
     return sorted_rows
 
-def sort_by_trend_count(tsv):
+def sort_by_location(tsv):
     rows = []
 
     for row in tsv:
