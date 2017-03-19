@@ -248,7 +248,7 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    title = filename[:-4] + '-' + sort_by
+    title = 'TEST' + filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
     post.title = title 
@@ -312,19 +312,20 @@ def main():
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
 
-    get_trending_topics(all_topics, place_ids, places, twitter)
-    extract_topics(all_topics, filtered_topics, filter_term)
+    #get_trending_topics(all_topics, place_ids, places, twitter)
+    #extract_topics(all_topics, filtered_topics, filter_term)
 
-    filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
-    email_file(config, filtered_topics_with_regions)
-    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
-    post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
-    get_top_topics(all_topics)
-    top_topics_with_regions = add_regions(top_topics, region_filename)
-    email_file(config, top_topics_with_regions)
-    post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
-    post_report_to_wordpress(settings, top_topics_with_regions, 'location')
+    #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
+    #email_file(config, filtered_topics_with_regions)
+    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
+    #get_top_topics(all_topics)
+    #top_topics_with_regions = add_regions(top_topics, region_filename)
+    #email_file(config, top_topics_with_regions)
+    #post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
+    #post_report_to_wordpress(settings, top_topics_with_regions, 'location')
 
+    post_report_to_wordpress(settings, "regions-and-trending-topics-17-2017-03-19.csv", 'trend')
     
 if __name__ == '__main__':
     main()
