@@ -94,7 +94,7 @@ def extract_topics(infile, outfile, keyword):
             row = "%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5])
             tsv_outfile.write(row)
 
-    print('topics filtered.')
+    print('topics filtered for keyword: %s.' % keyword)
 
 def count_topics(filename):
     all_topics = []
@@ -118,7 +118,7 @@ def email_file(config, filename):
     for to_address in email_list:
         yag = yagmail.SMTP(from_address, password)
         yag.send(to_address, filename, contents)
-        print('email sent.')
+        print('email sent to %s.' % to_address)
 
 def get_datestring():
     today = datetime.today()
@@ -206,7 +206,7 @@ def add_regions(original_file, region_file):
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
             
-    print("regions added.")
+    print("regions added to %s." % reg_filename)
     return reg_filename
 
 
