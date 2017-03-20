@@ -237,10 +237,11 @@ def generate_post_content_string(report_filename, sort_by):
         location = cells[0]
         trend = cells[2]
         count = cells[5]
-        table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+        table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
         content_string += table_row
 
     content_string += '</table>'
+    content_string += '<input type="submit" value="Submit">'
     return content_string
 
 def post_report_to_wordpress(settings_filename, report_filename, sort_by):
@@ -248,7 +249,7 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    title = 'TEST' + filename[:-4] + '-' + sort_by
+    title = 'TEST-' + filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
     post.title = title 
