@@ -223,7 +223,8 @@ def create_wordpress_client(settings_filename):
     return client
 
 def generate_post_content_string(report_filename, sort_by):
-    content_string = '<table>'
+    content_string = '<script type="text/javascript">function myFunction() {var x = document.getElementById(\'myDIV\');if (x.style.display === \'none\') {x.style.display = \'block\';} else {x.style.display = \'none\';} }</script>'
+    content_string += '<table>'
 
     with fileinput.input(files=report_filename) as tsv_file:
         if sort_by == 'trend':
@@ -237,7 +238,7 @@ def generate_post_content_string(report_filename, sort_by):
         location = cells[0]
         trend = cells[2]
         count = cells[5]
-        table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+        table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td><td><button onclick="myFunction()" id="myDIV">+</button></td></tr>'
         content_string += table_row
 
     content_string += '</table>'
