@@ -250,6 +250,7 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
+    # REMOVE TEST FROM FILENAME FOR PRODUCTION
     title = 'TEST-' + filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
