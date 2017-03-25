@@ -224,6 +224,7 @@ def create_wordpress_client(settings_filename):
 
 def generate_post_content_string(report_filename, sort_by):
     content_string = '<table>'
+    prev_trend = ""
 
     with fileinput.input(files=report_filename) as tsv_file:
         if sort_by == 'trend':
@@ -237,8 +238,10 @@ def generate_post_content_string(report_filename, sort_by):
         location = cells[0]
         trend = cells[2]
         count = cells[5]
-        table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
-        content_string += table_row
+        if trend != prev_trend:
+            table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+            content_string += table_row
+        prev_trend = trend
 
     content_string += '</table>'
     return content_string
@@ -248,7 +251,7 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    title = filename[:-4] + '-' + sort_by
+    title = 'TEST-' + filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
     post.title = title 
@@ -318,12 +321,12 @@ def main():
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     email_file(config, filtered_topics_with_regions)
     post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
-    post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
+    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
     get_top_topics(all_topics)
     top_topics_with_regions = add_regions(top_topics, region_filename)
     email_file(config, top_topics_with_regions)
     post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
-    post_report_to_wordpress(settings, top_topics_with_regions, 'location')
+    #post_report_to_wordpress(settings, 'regions-and-top-trending-topics-2017-03-25.csv', 'location')
 
     
 if __name__ == '__main__':
