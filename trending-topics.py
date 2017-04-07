@@ -224,7 +224,8 @@ def create_wordpress_client(settings_filename):
 
 def generate_post_content_string(report_filename, sort_by):
     #content_string = '<script type="text/javascript">function myFunction() {var x = document.getElementById(\'myDIV\');if (x.style.display === \'none\') {x.style.display = \'block\';} else {x.style.display = \'none\';} }</script>'
-    content_string = '<table>'
+    #content_string = '<table>'
+    content_string = ''
 
     with fileinput.input(files=report_filename) as tsv_file:
         if sort_by == 'trend':
@@ -232,14 +233,23 @@ def generate_post_content_string(report_filename, sort_by):
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
 
+    prev_trend = ''
+
     for cells in sorted_data:
         region = cells[9]
         nation = cells[8]
         location = cells[0]
         trend = cells[2]
         count = cells[5]
-        table_row = '<div id="'+ region + '" class="collapse"><tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td><td><button data-toggle="collapse" data-target="' + region + '">+</button></td></tr>'
+        if trend != prev_trend:
+            if cells != sorted_data[0]:
+                content_string += '</table>[/expand]<br>'
+            content_string += '[expand title="'
+            content_string += trend
+            content_string += '"]<table>'
+        table_row = '<div id="'+ region + '"><tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td><td><button data-toggle="collapse" data-target="' + region + '">+</button></td></tr>'
         content_string += table_row
+        prev_trend = trend
 
     content_string += '</table>'
     content_string += '<input type="submit" value="Submit">'
