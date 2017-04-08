@@ -246,8 +246,13 @@ def generate_post_content_string(report_filename, sort_by):
                 content_string += '</table>[/expand]<br>'
             content_string += '[expand title="'
             content_string += trend
-            content_string += '"]<table>'
-        table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+            content_string += ' ('
+            content_string += str(count)
+            content_string += '")]<table>'
+        table_row = '<td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+        content_string += table_row
+        prev_trend = trend
+        #table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
         content_string += table_row
         prev_trend = trend
 
