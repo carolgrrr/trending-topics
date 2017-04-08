@@ -244,14 +244,14 @@ def generate_post_content_string(report_filename, sort_by):
         if trend != prev_trend:
             if cells != sorted_data[0]:
                 content_string += '</table>[/expand]<br>'
-            content_string += '<br><br>[expand title="'
+            content_string += '[expand title="'
             content_string += trend
             content_string += '"]<table>'
         table_row = '<tr><td><input type="checkbox" name="' + trend +'"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
         content_string += table_row
         prev_trend = trend
 
-    content_string += '</table>'
+    content_string += '</table>[/expand]'
     content_string += '<input type="submit" value="Submit">'
     return content_string
 
