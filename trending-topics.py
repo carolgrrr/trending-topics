@@ -246,7 +246,7 @@ def generate_post_content_string(report_filename, sort_by):
                 trend_tag = '<input type="checkbox" id="' + trend +'">'
                 label = '<label for="' + trend + '">' + trend + '</label>'
                 content_string += '</table>\n[/expand]\n<br>'
-                content_string += trend_name
+                content_string += trend_tag
                 content_string += label
             expand_name = '\n[expand title="' + trend + ' (' + str(count) + ')"]<table>'
             #content_string += '[expand title="'
