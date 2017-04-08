@@ -268,7 +268,6 @@ def generate_post_content_string(report_filename, sort_by):
     content_string += trend_tag
     content_string += label
 
-    content_string += '</table>[/expand]<br>'
     content_string += '<br><input type="submit" value="Submit">'
     return content_string
 
@@ -356,9 +355,9 @@ def main():
     #post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, top_topics_with_regions, 'location')
 
-    #post_report_to_wordpress(settings, "regions-and-trending-topics-17-2017-03-19.csv", 'trend')
+    post_report_to_wordpress(settings, "regions-and-trending-topics-17-2017-03-19.csv", 'trend')
     
-    post_report_to_wordpress(settings, "test-data.csv", 'trend')
+    #post_report_to_wordpress(settings, "test-data.csv", 'trend')
     
 if __name__ == '__main__':
     main()
