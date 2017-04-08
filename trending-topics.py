@@ -243,8 +243,12 @@ def generate_post_content_string(report_filename, sort_by):
         count = cells[5]
         if trend != prev_trend:
             if cells != sorted_data[0]:
-                content_string += '</table>[/expand]<br>'
-            expand_name = '[expand title="' + trend + ' (' + str(count) + ')]<table>'
+                trend_tag = '<input type="checkbox" id="' + trend +'">'
+                label = '<label for="' + trend + '">' + trend + '</label>'
+                content_string += '</table>\n[/expand]\n<br>'
+                content_string += trend_name
+                content_string += label
+            expand_name = '\n[expand title="' + trend + ' (' + str(count) + ')"]<table>'
             #content_string += '[expand title="'
             #content_string += trend
             #content_string += ' ('
@@ -258,7 +262,7 @@ def generate_post_content_string(report_filename, sort_by):
         content_string += table_row
         prev_trend = trend
 
-    content_string += '</table>[/expand]'
+    content_string += '</table>[/expand]<br>'
     content_string += '<input type="submit" value="Submit">'
     return content_string
 
