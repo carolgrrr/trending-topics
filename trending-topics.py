@@ -244,11 +244,13 @@ def generate_post_content_string(report_filename, sort_by):
         if trend != prev_trend:
             if cells != sorted_data[0]:
                 content_string += '</table>[/expand]<br>'
-            content_string += '[expand title="'
-            content_string += trend
-            content_string += ' ('
-            content_string += str(count)
-            content_string += '")]<table>'
+            expand_name = '[expand title="' + trend + ' (' + str(count) + ')]<table>'
+            #content_string += '[expand title="'
+            #content_string += trend
+            #content_string += ' ('
+            #content_string += str(count)
+            #content_string += '")]<table>'
+            content_string += expand_name
         table_row = '<td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
         content_string += table_row
         prev_trend = trend
@@ -284,6 +286,7 @@ def sort_by_trend_count(tsv):
             rows.append(cells)
 
     for row in rows:
+        #print(row)
         #if row == rows[0]:
         #    continue
         row[5] = int(row[5])
@@ -343,7 +346,9 @@ def main():
     #post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, top_topics_with_regions, 'location')
 
-    post_report_to_wordpress(settings, "regions-and-trending-topics-17-2017-03-19.csv", 'trend')
+    #post_report_to_wordpress(settings, "regions-and-trending-topics-17-2017-03-19.csv", 'trend')
+    
+    post_report_to_wordpress(settings, "test-data.csv", 'trend')
     
 if __name__ == '__main__':
     main()
