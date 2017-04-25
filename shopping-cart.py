@@ -11,14 +11,16 @@ def main():
     	consumer_key=config.get('wordpress', 'consumer_key'), # Your consumer key
     	consumer_secret=config.get('wordpress', 'consumer_secret'), # Your consumer secret
     	wp_api=True, # Enable the WP REST API integration
-    	version="wc/v2" # WooCommerce WP REST API version
+    	version="wc/v2", # WooCommerce WP REST API version
+    	verify_ssl=False
 	)
 
 
 	print(wcapi)
+	print(wcapi.get("customers/2"))
 	#print(wcapi.get('orders/40856').json())
 
-	print(wcapi.get('orders/40856'))
+	#print(wcapi.get('orders/40856'))
 
 	#/wp-json/wc/v2/orders
 	#data = {
