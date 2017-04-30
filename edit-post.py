@@ -129,15 +129,31 @@ def main():
     wp = create_wordpress_client(settings)
 
     draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
-    published_posts = wp.call(posts.GetPosts({'post_status': 'published'}))
-    print(len(published_posts))
+    
+    #print(len(published_posts))
 
+    print('original draft posts:')
+    for post in draft_posts:
+    	print(post.title)
+    	if post.title == 'trending-topics-with-regions-trend':
+    		post.post_status = 'publish'
+    		print('%s published.' % post.title)
+
+    published_posts = wp.call(posts.GetPosts({'post_status': 'publish'}))
+
+    print ('published posts after publishing:')
     for post in published_posts:
-    	if post.title == "Today's Top Trending Topics (Containing 17) on Twitter":
+    	print(post.title)
+    	if post.title == "trending-topics-with-regions-trend":
+		#if post.title == "Today's Top Trending Topics (Containing 17) on Twitter":
     		print('replace top 17 post with today\'s data')
     	elif post.title == "Today's Top Trending Topics on Twitter":
     		print('replace top trending post with today\'s data')
-    	#print(post.title)
+    	
+    new_drafts = wp.call(posts.GetPosts({'post_status': 'draft'}))
+    print('new draft posts:')
+    for post in new_drafts:
+    	print(post.title)
 
 
 if __name__ == '__main__':
