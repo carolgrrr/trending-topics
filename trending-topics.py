@@ -319,13 +319,13 @@ def main():
     extract_topics(all_topics, filtered_topics, filter_term)
 
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
-    email_file(config, filtered_topics_with_regions)
-    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    #email_file(config, filtered_topics_with_regions)
+    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
     get_top_topics(all_topics)
     top_topics_with_regions = add_regions(top_topics, region_filename)
-    email_file(config, top_topics_with_regions)
-    post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
+    #email_file(config, top_topics_with_regions)
+    #post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, 'regions-and-top-trending-topics-2017-03-25.csv', 'location')
 
     
