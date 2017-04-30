@@ -286,12 +286,14 @@ def sort_by_trend_count(tsv):
     return sorted_rows
 
 def sort_by_location(tsv):
+    today = get_datestring()
     rows = []
 
     for row in tsv:
         if not fileinput.isfirstline():
             cells = row.split('\t')
-            rows.append(cells)
+            if cells[0] == today:
+                rows.append(cells)
 
     for row in rows:
         #if row == rows[0]:
