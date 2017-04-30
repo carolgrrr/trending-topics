@@ -200,7 +200,7 @@ def add_regions(original_file, region_file):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-05-03'
+    today = '2017-05-04'
     region_filename = "trending-topics-with-regions.csv"
 
     if not(os.path.isfile(region_filename)):
@@ -274,6 +274,7 @@ def sort_by_trend_count(tsv):
         if not fileinput.isfirstline():
             cells = row.split('\t')
             if cells[0] == today:
+                del(cells[0])
                 rows.append(cells)
 
     for row in rows:
@@ -293,6 +294,7 @@ def sort_by_location(tsv):
         if not fileinput.isfirstline():
             cells = row.split('\t')
             if cells[0] == today:
+                del(cells[0])
                 rows.append(cells)
 
     for row in rows:
@@ -330,6 +332,7 @@ def main():
 
     my_filename = add_regions('trending-topics-17-2017-04-26.csv', region_filename)
     print(my_filename)
+    post_report_to_wordpress(settings, my_filename, 'trend')
 
     #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     #email_file(config, filtered_topics_with_regions)
