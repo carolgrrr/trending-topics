@@ -198,16 +198,20 @@ def add_regions(original_file, region_file):
                     row.extend([region[1], region[2], region[3], region[4]])
                     topics_with_regions.append(row)
     
-    reg_filename = "regions-and-" + original_file
-    with open(reg_filename, 'w') as tsv_file:
-        tsv_file.write('Location\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')     
+    today = get_datestring()
+    region_filename = "trending-topics-with-regions.csv"
 
+    if not(os.path.isfile(region_filename)):
+        with open(region_filename, 'w') as tsv_file:
+            tsv_file.write('Date\tLocation\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')
+
+    with open(region_filename, 'w') as tsv_file:
         for topic in topics_with_regions:
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
+            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(today, topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
             
     print("regions added.")
-    return reg_filename
+    return region_filename
 
 
 def create_wordpress_client(settings_filename):
