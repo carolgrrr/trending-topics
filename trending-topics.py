@@ -200,7 +200,7 @@ def add_regions(original_file, region_file):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-05-04'
+    today = '2017-04-26'
     region_filename = "trending-topics-with-regions.csv"
 
     if not(os.path.isfile(region_filename)):
@@ -323,7 +323,7 @@ def main():
 
     
     #datestring = get_datestring()
-    datestring = '2017-04-30'
+    datestring = '2017-04-26'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
@@ -348,7 +348,7 @@ def main():
 
     #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     #email_file(config, filtered_topics_with_regions)
-    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
     #get_top_topics(all_topics)
     #top_topics_with_regions = add_regions(top_topics, region_filename)
