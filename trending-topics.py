@@ -200,7 +200,7 @@ def add_regions(original_file, region_file, outfile):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-04-26'
+    today = '2017-04-30'
 
     region_filename = outfile
 
@@ -298,11 +298,11 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
         wp.call(posts.EditPost(filter_id, post))
     else:
         wp.call(NewPost(post))
-        
+
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-    today = '2017-04-26'
+    today = '2017-04-30'
     #today = get_datestring()
     rows = []
 
@@ -361,7 +361,7 @@ def main():
 
     
     #datestring = get_datestring()
-    datestring = '2017-04-26'
+    datestring = '2017-04-30'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
