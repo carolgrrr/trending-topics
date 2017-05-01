@@ -33,10 +33,15 @@ def sort_by_trend_count(tsv):
     rows = []
 
     for row in tsv:
+        #print("new row")
         if not fileinput.isfirstline():
-            cells = row.split('\t')
+            #cells = row.split('\t')
+            cells = row.split(',')
+            #print(cells[0])
             if cells[0] == today:
+                #print("today is %s" % today)
                 del(cells[0])
+                #print(cells)
                 rows.append(cells)
 
     for row in rows:
@@ -45,7 +50,9 @@ def sort_by_trend_count(tsv):
         row[5] = int(row[5])
 
     # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+    #sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+
+    sorted_rows = sorted(rows, key = lambda x: (-x[5]))
     return sorted_rows
 
 def sort_by_location(tsv):
@@ -54,10 +61,12 @@ def sort_by_location(tsv):
     rows = []
 
     for row in tsv:
+        print("new row")
         if not fileinput.isfirstline():
             cells = row.split('\t')
+            print(cells[0])
             if cells[0] == today:
-                print("Today is %s" % today)
+                #print("Today is %s" % today)
                 del(cells[0])
                 rows.append(cells)
 
@@ -91,13 +100,20 @@ def generate_post_content_string(report_filename, sort_by):
 
     with fileinput.input(files=report_filename) as tsv_file:
         if sort_by == 'trend':
+            print(tsv_file)
             sorted_data = sort_by_trend_count(tsv_file)
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
 
     for cells in sorted_data:
-        region = cells[9]
-        nation = cells[8]
+        #region = cells[9]
+        #nation = cells[8]
+        #location = cells[0]
+        #trend = cells[2]
+        #count = cells[5]
+
+        region = cells[1]
+        nation = cells[3]
         location = cells[0]
         trend = cells[2]
         count = cells[5]
