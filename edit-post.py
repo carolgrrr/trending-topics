@@ -136,24 +136,37 @@ def main():
     for post in draft_posts:
     	print(post.title)
     	if post.title == 'trending-topics-with-regions-trend':
-    		post.post_status = 'publish'
+    		post.post_status = 'Published'
     		print('%s published.' % post.title)
 
-    published_posts = wp.call(posts.GetPosts({'post_status': 'publish'}))
+    published_posts = wp.call(posts.GetPosts({'post_status': 'Published'}))
+    print(len(published_posts))
 
-    print ('published posts after publishing:')
-    for post in published_posts:
-    	print(post.title)
-    	if post.title == "trending-topics-with-regions-trend":
-		#if post.title == "Today's Top Trending Topics (Containing 17) on Twitter":
-    		print('replace top 17 post with today\'s data')
-    	elif post.title == "Today's Top Trending Topics on Twitter":
-    		print('replace top trending post with today\'s data')
+    post = WordPressPost()
+    post.title = "Connected Action"
+    post.content = "Welcome to our site"
+    post.post_status = "publish"
+    wp.call(NewPost(post))
+
+    statuses = wp.call(posts.GetPostStatusList())
+    for status in statuses:
+        print(status)
+
+    #print ('published posts after publishing:')
+    #for post in published_posts:
+    #	print(post.title)
+    #	if post.title == "trending-topics-with-regions-trend":
+    #        post_id = post.id
+    #        print(post_id)
+    #        wp.call(posts.EditPost({'id': post_id}, {'title': 'Today\'s Top Trending Topics (Containing 17) on Twitter', 'post_status': 'Published'})) #if post.title == "Today's Top Trending Topics (Containing 17) on Twitter":
+    #        print('replace top 17 post with today\'s data')
+    #	#elif post.title == "Today's Top Trending Topics on Twitter":
+    #	#	print('replace top trending post with today\'s data')
     	
-    new_drafts = wp.call(posts.GetPosts({'post_status': 'draft'}))
-    print('new draft posts:')
-    for post in new_drafts:
-    	print(post.title)
+    #new_drafts = wp.call(posts.GetPosts({'post_status': 'draft'}))
+    #print('new draft posts:')
+    #for post in new_drafts:
+    #	print(post.title)
 
 
 if __name__ == '__main__':
