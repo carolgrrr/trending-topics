@@ -201,7 +201,8 @@ def add_regions(original_file, region_file):
     
     #today = get_datestring()
     today = '2017-04-26'
-    region_filename = "trending-topics-with-regions.csv"
+    #region_filename = "trending-topics-with-regions.csv"
+    region_filename = "regions-and-" + original_file
 
     if not(os.path.isfile(region_filename)):
         with open(region_filename, 'w') as tsv_file:
@@ -333,8 +334,8 @@ def main():
     extract_topics(all_topics, filtered_topics, filter_term)
     filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
 
-    get_top_topics(all_topics)
-    top_topics_with_regions = add_regions(top_topics, region_filename)
+    #get_top_topics(all_topics)
+    #top_topics_with_regions = add_regions(top_topics, region_filename)
 
 
 
