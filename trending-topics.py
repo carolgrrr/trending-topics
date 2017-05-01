@@ -289,7 +289,7 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-    today = '2017-04-26'
+    today = '2017-04-30'
     #today = get_datestring()
     rows = []
 
@@ -348,7 +348,7 @@ def main():
 
     
     #datestring = get_datestring()
-    datestring = '2017-04-26'
+    datestring = '2017-04-30'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
