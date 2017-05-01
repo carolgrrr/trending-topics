@@ -159,7 +159,17 @@ def main():
     #		post.post_status = 'Published'
     #		print('%s published.' % post.title)
 
-    #published_posts = wp.call(posts.GetPosts({'post_status': 'Published'}))
+    #published_posts = wp.call(posts.GetPosts({'post_status': 'publish'}))
+
+    #for each in published_posts:
+    for each in draft_posts:
+        if each.title == 'Todays Top Trending Topics (Containing 17) on Twitter':
+            my_id = each.id
+        print(each.title)
+        print(each.id)
+        print(each.date)
+
+    #wp.call()
     #print(len(published_posts))
 
     #post = WordPressPost()
@@ -168,7 +178,7 @@ def main():
     #post.post_status = "publish"
     #wp.call(NewPost(post))
 
-    post_report_to_wordpress(settings, 'trending-topics-17-2017-04-30.csv', 'trend')
+    #post_report_to_wordpress(settings, 'trending-topics-17-2017-04-30.csv', 'trend')
 
 
     #statuses = wp.call(posts.GetPostStatusList())
