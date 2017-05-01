@@ -56,7 +56,7 @@ def sort_by_trend_count(tsv):
     return sorted_rows
 
 def sort_by_location(tsv):
-    today = '2017-05-01'
+    today = '2017-04-30'
     #today = get_datestring()
     rows = []
 
@@ -100,20 +100,19 @@ def generate_post_content_string(report_filename, sort_by):
 
     with fileinput.input(files=report_filename) as tsv_file:
         if sort_by == 'trend':
-            print(tsv_file)
             sorted_data = sort_by_trend_count(tsv_file)
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
 
     for cells in sorted_data:
-        #region = cells[9]
-        #nation = cells[8]
+        region = cells[9]
+        nation = cells[8]
         #location = cells[0]
         #trend = cells[2]
         #count = cells[5]
 
-        region = cells[1]
-        nation = cells[3]
+        #region = cells[1]
+        #nation = cells[3]
         location = cells[0]
         trend = cells[2]
         count = cells[5]
