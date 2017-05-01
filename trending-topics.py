@@ -200,7 +200,7 @@ def add_regions(original_file, region_file, outfile):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-04-30'
+    today = '2017-04-26'
 
     region_filename = outfile
 
@@ -266,11 +266,24 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    title = filename[:-4] + '-' + sort_by
+    #if 'top' in filename:
+    #    title = 'Today\'s Top Trending Topics on Twitter'
+    if '17' in filename:
+        title = 'TodaysTopTrendingTopics(Containing17)onTwitter'
+    #title = filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
     post.title = title 
     post.content = content_string
+
+    published_posts = wp.call(posts.GetPosts({'post_status': 'publish'}))
+    flag = False
+
+    for post in published_posts:
+        print(post.id)
+        #if post.title == title:
+        #    post_id = post.id
+        #    flag = True
 
     wp.call(NewPost(post))
     print('%s posted.' % title)
@@ -326,7 +339,7 @@ def main():
     filter_term = config.get('files', 'filter_term')
     prefix = config.get('files', 'prefix')
     region_filename = config.get('files', 'regions')
-    filtered_file = config.get('files', 'filetered')
+    filtered_file = config.get('files', 'filtered')
     top_topics_file = config.get('files', 'top')
     twitter = get_twitter(settings)
 
