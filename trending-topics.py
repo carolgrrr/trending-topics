@@ -280,8 +280,9 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     #post.post_status = 'publish'
 
     #published_posts = wp.call(posts.GetPosts({'post_status': 'publish'}))
-    flag = False
-    draft_posts = wp.call(post.GetPosts({'post_status': 'draft'}))
+    filter_id = ""
+    draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
+
 
     for draft in draft_posts:
         if draft.title == 'Todays Top Trending Topics (Containing 17) on Twitter':
@@ -293,11 +294,11 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     #    #    post_id = post.id
     #    #    flag = True
 
-    
-    wp.call(EditPost(filter_id, post))
-
-
-    #wp.call(NewPost(post))
+    if filter_id != "":
+        wp.call(posts.EditPost(filter_id, post))
+    else:
+        wp.call(NewPost(post))
+        
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
@@ -360,22 +361,22 @@ def main():
 
     
     #datestring = get_datestring()
-    datestring = '2017-04-30'
+    datestring = '2017-04-26'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
 
     # testing only interim file creation
-    #extract_topics(all_topics, filtered_topics, filter_term)
+    extract_topics(all_topics, filtered_topics, filter_term)
     
-    #filtered_topics_with_regions = add_regions(filtered_topics, region_filename, filtered_file)
+    filtered_topics_with_regions = add_regions(filtered_topics, region_filename, filtered_file)
     #filtered_topics_with_regions = 'regions-and-trending-topics-17-2017-04-26.csv'
     #get_top_topics(all_topics)
     #top_topics_with_regions = add_regions(top_topics, region_filename)
 
-    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
-
+    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    #post_report_to_wordpress(settings, filtered_file, 'trend')
 
     #get_trending_topics(all_topics, place_ids, places, twitter)
     #extract_topics(all_topics, filtered_topics, filter_term)
