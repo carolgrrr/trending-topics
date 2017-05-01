@@ -4,6 +4,8 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import media, posts
 import configparser
+import fileinput
+from datetime import datetime
 
 
 ### DATA PREP FUNCTIONS ###
@@ -26,7 +28,8 @@ def get_datestring():
     return datestring
 
 def sort_by_trend_count(tsv):
-    today = get_datestring()
+    today = '2017-05-01'
+    #today = get_datestring()
     rows = []
 
     for row in tsv:
@@ -46,13 +49,15 @@ def sort_by_trend_count(tsv):
     return sorted_rows
 
 def sort_by_location(tsv):
-    today = get_datestring()
+    today = '2017-05-01'
+    #today = get_datestring()
     rows = []
 
     for row in tsv:
         if not fileinput.isfirstline():
             cells = row.split('\t')
             if cells[0] == today:
+                print("Today is %s" % today)
                 del(cells[0])
                 rows.append(cells)
 
@@ -107,13 +112,13 @@ def generate_post_content_string(report_filename, sort_by):
 def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     wp = create_wordpress_client(settings_filename)
 
-    filename = report_filename
-    content_string = generate_post_content_string(filename, sort_by)
-    title = filename[:-4] + '-' + sort_by
+    content_string = generate_post_content_string(report_filename, sort_by)
+    title = report_filename[:-4] + '-' + sort_by
 
     post = WordPressPost()
     post.title = title 
     post.content = content_string
+    post.post_status = 'publish'
 
     wp.call(NewPost(post))
     print('%s posted.' % title)
@@ -132,25 +137,28 @@ def main():
     
     #print(len(published_posts))
 
-    print('original draft posts:')
-    for post in draft_posts:
-    	print(post.title)
-    	if post.title == 'trending-topics-with-regions-trend':
-    		post.post_status = 'Published'
-    		print('%s published.' % post.title)
+    #print('original draft posts:')
+    #for post in draft_posts:
+    #	print(post.title)
+    #	if post.title == 'trending-topics-with-regions-trend':
+    #		post.post_status = 'Published'
+    #		print('%s published.' % post.title)
 
-    published_posts = wp.call(posts.GetPosts({'post_status': 'Published'}))
-    print(len(published_posts))
+    #published_posts = wp.call(posts.GetPosts({'post_status': 'Published'}))
+    #print(len(published_posts))
 
-    post = WordPressPost()
-    post.title = "Connected Action"
-    post.content = "Welcome to our site"
-    post.post_status = "publish"
-    wp.call(NewPost(post))
+    #post = WordPressPost()
+    #post.title = "Connected Action"
+    #post.content = "Welcome to our site"
+    #post.post_status = "publish"
+    #wp.call(NewPost(post))
 
-    statuses = wp.call(posts.GetPostStatusList())
-    for status in statuses:
-        print(status)
+    post_report_to_wordpress(settings, 'trending-topics-17-2017-04-30.csv', 'trend')
+
+
+    #statuses = wp.call(posts.GetPostStatusList())
+    #for status in statuses:
+    #    print(status)
 
     #print ('published posts after publishing:')
     #for post in published_posts:
