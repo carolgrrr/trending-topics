@@ -321,18 +321,30 @@ def main():
     place_ids = find_place_ids(twitter)
     places = find_places(twitter)
 
-    datestring = get_datestring()
+    
+    #datestring = get_datestring()
+    datestring = '2017-04-30'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
 
+    # testing only interim file creation
+    extract_topics(all_topics, filtered_topics, filter_term)
+    filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
+
+    get_top_topics(all_topics)
+    top_topics_with_regions = add_regions(top_topics, region_filename)
+
+
+
+
     #get_trending_topics(all_topics, place_ids, places, twitter)
     #extract_topics(all_topics, filtered_topics, filter_term)
 
-    my_filename = add_regions('trending-topics-17-2017-04-26.csv', region_filename)
-    print(my_filename)
-    post_report_to_wordpress(settings, my_filename, 'trend')
+    #my_filename = add_regions('trending-topics-17-2017-04-26.csv', region_filename)
+    #print(my_filename)
+    #post_report_to_wordpress(settings, my_filename, 'trend')
 
     #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     #email_file(config, filtered_topics_with_regions)
