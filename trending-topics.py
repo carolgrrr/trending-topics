@@ -200,9 +200,12 @@ def add_regions(original_file, region_file):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-04-26'
+    today = '2017-04-30'
     #region_filename = "trending-topics-with-regions.csv"
-    region_filename = "regions-and-" + original_file
+    #region_filename = "regions-and-" + original_file
+
+    region_filename = 'all-trending-topics-17.csv'
+
 
     if not(os.path.isfile(region_filename)):
         with open(region_filename, 'w') as tsv_file:
@@ -239,12 +242,19 @@ def generate_post_content_string(report_filename, sort_by):
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
 
+    #print(sorted_data)
+
     for cells in sorted_data:
         region = cells[9]
         nation = cells[8]
         location = cells[0]
         trend = cells[2]
         count = cells[5]
+        #region = cells[10]
+        #nation = cells[9]
+        #location = cells[1]
+        #trend = cells[3]
+        #count = cells[6]
         if trend != prev_trend:
             table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
             content_string += table_row
@@ -268,7 +278,8 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-    today = get_datestring()
+    today = '2017-04-30'
+    #today = get_datestring()
     rows = []
 
     for row in tsv:
@@ -324,20 +335,20 @@ def main():
 
     
     #datestring = get_datestring()
-    datestring = '2017-04-26'
+    datestring = '2017-04-30'
 
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
 
     # testing only interim file creation
-    extract_topics(all_topics, filtered_topics, filter_term)
-    filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
-
+    #extract_topics(all_topics, filtered_topics, filter_term)
+    #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
+    #filtered_topics_with_regions = 'regions-and-trending-topics-17-2017-04-26.csv'
     #get_top_topics(all_topics)
     #top_topics_with_regions = add_regions(top_topics, region_filename)
 
-
+    post_report_to_wordpress(settings, 'all-trending-topics-17.csv', 'trend')
 
 
     #get_trending_topics(all_topics, place_ids, places, twitter)
@@ -349,7 +360,7 @@ def main():
 
     #filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
     #email_file(config, filtered_topics_with_regions)
-    post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
+    #post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
     #post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
     #get_top_topics(all_topics)
     #top_topics_with_regions = add_regions(top_topics, region_filename)
