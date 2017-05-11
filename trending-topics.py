@@ -252,6 +252,9 @@ def generate_post_content_string(report_filename, sort_by):
         prev_trend = trend
 
     content_string += '</table>'
+    today = get_datestring()
+    content_string += '<br>Updated on %s' % today
+
     return content_string
 
 def post_report_to_wordpress(settings_filename, report_filename, sort_by):
