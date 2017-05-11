@@ -259,8 +259,11 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
     filename = report_filename
     content_string = generate_post_content_string(filename, sort_by)
-    if '17' in filename:
-        title = 'Todays Top Trending Topics (Containing 17) on Twitter'
+    if '-17-' in filename:
+        title = 'Today\'s Trending Topics (Containing 17) on Twitter'
+    if '-top-' in filename:
+        title = 'Today\'s Top Trending Topics on Twitter'
+
 
     post = WordPressPost()
     post.title = title 
