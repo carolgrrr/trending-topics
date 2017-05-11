@@ -230,7 +230,7 @@ def create_wordpress_client(settings_filename):
 
     return client
 
-def generate_post_content_string(report_filename, sort_by):
+def generate_content_string(report_filename, sort_by):
     content_string = '<table>'
     prev_trend = ""
 
@@ -257,11 +257,45 @@ def generate_post_content_string(report_filename, sort_by):
 
     return content_string
 
+def update_wordpress_page(settings_filename, report_filename, sort_by):
+    wp = create_wordpress_client(settings_filename)
+
+    filename = report_filename
+    content_string = generate_content_string(filename, sort_by)
+    title = 'Twitter Trends Report'
+    #if '-17-' in filename:
+    #    title = 'Today\'s Trending Topics (Containing 17) on Twitter'
+    #if '-top-' in filename:
+    #    title = 'Today\'s Top Trending Topics on Twitter'
+
+
+    page = WordPressPage()
+    page.title = title 
+    page.content = content_string
+    # uncomment below to publish
+    #post.post_status = publish
+    
+    filter_id = ""
+    #draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
+    published_pages = wp.call(posts.GetPosts({post_type = 'page', post_status: 'publish'}))
+
+    for item in published_pages:
+        if item.title == 'Twitter Trends Report':
+            filter_id = item.id
+
+    if filter_id == "":
+        wp.call(NewPost(post))
+    else:
+        wp.call(posts.EditPost(filter_id, post))
+
+    print('%s posted.' % title)
+
+
 def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     wp = create_wordpress_client(settings_filename)
 
     filename = report_filename
-    content_string = generate_post_content_string(filename, sort_by)
+    content_string = generate_content_string(filename, sort_by)
     if '-17-' in filename:
         title = 'Today\'s Trending Topics (Containing 17) on Twitter'
     if '-top-' in filename:
