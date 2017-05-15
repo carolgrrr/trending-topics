@@ -390,18 +390,25 @@ def sort_by_all(tsv, settings_filename):
     all_topics = []
     filtered_topics = []
     remaining_topics = []
+    filtered_tags = []
+    remaining_tags = []
 
     for row in rows:
         if keyword in row[2]:
             filtered_topics.append(row)
+            filtered_tags.append(row[2])
         else:
             remaining_topics.append(row)
+            remaining_tags.append(row[2])
 
-    topic_counter = Counter(rows)
+    # need to create counter of only hashtags
+    # but also maintain entire row to be used for 
+    filtered_counter = Counter(filtered_tags)
+    remaining_counter = Counter(remaining_tags)
 
     counted_and_filtered = []
     for topic in filtered_topics:
-        count = topic_counter[topic[2]]
+        count = filtered_counter[topic[2]]
         row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
         counted_and_filtered.append(row)
 
@@ -409,8 +416,8 @@ def sort_by_all(tsv, settings_filename):
     sorted_filtered = sorted(counted_and_filtered, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
 
     counted_and_remaining = []
-    for topic in filtered_topics:
-        count = topic_counter[topic[2]]
+    for topic in remaining_topics:
+        count = remaining_counter[topic[2]]
         row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
         counted_and_remaining.append(row)
 
