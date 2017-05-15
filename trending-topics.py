@@ -230,7 +230,7 @@ def create_wordpress_client(settings_filename):
     return client
 
 
-def generate_content_string(report_filename, sort_by):
+def generate_content_string(settings_filename, report_filename, sort_by):
     content_string = '<table>'
     prev_trend = ""
 
@@ -240,7 +240,7 @@ def generate_content_string(report_filename, sort_by):
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
         elif sort_by == 'all':
-            sorted_data = sort_by_all(tsv_file)
+            sorted_data = sort_by_all(tsv_file, settings_filename)
 
     for cells in sorted_data:
         region = cells[9]
@@ -264,8 +264,7 @@ def generate_content_string(report_filename, sort_by):
 def update_wordpress_page(settings_filename, report_filename, sort_by):
     wp = create_wordpress_client(settings_filename)
 
-    filename = report_filename
-    content_string = generate_content_string(filename, sort_by)
+    content_string = generate_content_string(settings_filename, report_filename, sort_by)
     title = 'Twitter Trends Report'
     #if '-17-' in filename:
     #    title = 'Today\'s Trending Topics (Containing 17) on Twitter'
@@ -281,7 +280,7 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
     
     filter_id = ""
     #draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
-    published_pages = wp.call(posts.GetPosts({post_type = 'page', post_status: 'publish'}))
+    published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
 
     for item in published_pages:
         if item.title == 'Twitter Trends Report':
@@ -367,7 +366,10 @@ def sort_by_location(tsv):
     sorted_rows = sorted(rows, key = lambda x: (x[9], x[8], x[0], x[2], -x[5]))
     return sorted_rows
 
-def sort_by_all(tsv):
+def sort_by_all(tsv, settings_filename):
+    config = configparser.ConfigParser()
+    config.read(settings_filename)
+    keyword = config.get('files', 'filter_term')
     # first only get today's trends
     # then filter out keyword & keep remaining
     # sort keyword by count
@@ -456,15 +458,15 @@ def main():
     places = find_places(twitter)
 
     #today = get_datestring()
-    datestring = '2017-04-26'
-    #datestring = '2017-04-30'
+    today = '2017-04-26'
+    #today = '2017-04-30'
 
     all_topics = prefix + '-' + today + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
     top_topics = 'top-' + all_topics
 
     # final order
-    get_trending_topics(all_topics, place_ids, places, twitter)
+    #get_trending_topics(all_topics, place_ids, places, twitter)
     add_regions(all_topics, region_filename, trends_file)
     update_wordpress_page(settings, trends_file, 'all')
 
