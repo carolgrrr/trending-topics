@@ -5,7 +5,7 @@ import time
 import yagmail
 from datetime import datetime
 from collections import Counter
-from wordpress_xmlrpc import Client, WordPressPost
+from wordpress_xmlrpc import Client, WordPressPost, WordPressPage
 from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
 from wordpress_xmlrpc.methods.users import GetUserInfo
 from wordpress_xmlrpc.compat import xmlrpc_client
@@ -206,11 +206,11 @@ def add_regions(original_file, region_file, outfile):
 
     if not(os.path.isfile(outfile)):
         with open(outfile, 'w') as tsv_file:
-            tsv_file.write('Date\tLocation\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')
+            tsv_file.write('Date\tLocation\tWOE ID\tName\tURL\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')
 
     with open(outfile, 'a') as tsv_file:
         for topic in topics_with_regions:
-            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(today, topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
+            row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(today, topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9], topic[10])
             tsv_file.write(row)
             
     print("regions added.")
@@ -409,16 +409,19 @@ def sort_by_all(tsv, settings_filename):
     counted_and_filtered = []
     for topic in filtered_topics:
         count = filtered_counter[topic[2]]
-        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count, topic[6], topic[7], topic[8], topic[9]]
         counted_and_filtered.append(row)
 
     #sorted_filtered = sorted(counted_and_filtered, key=lambda x: (x[5], x[2]), reverse=True)
+    ## x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
+    # count = row[5]
+
     sorted_filtered = sorted(counted_and_filtered, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
 
     counted_and_remaining = []
     for topic in remaining_topics:
         count = remaining_counter[topic[2]]
-        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count, topic[6], topic[7], topic[8], topic[9]]
         counted_and_remaining.append(row)
 
     #sorted_remaining = sorted(counted_and_remaining, key=lambda x: (x[5], x[2]), reverse=True)
