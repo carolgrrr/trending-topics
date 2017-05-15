@@ -367,10 +367,6 @@ def sort_by_all(tsv):
     # sort keyword by count
     # sort remaining by count
 
-
-
-
-    #today = '2017-04-30'
     today = get_datestring()
     rows = []
 
@@ -381,12 +377,61 @@ def sort_by_all(tsv):
                 del(cells[0])
                 rows.append(cells)
 
+    all_topics = []
+    filtered_topics = []
+    remaining_topics = []
+
     for row in rows:
-        row[5] = int(row[5])
+        if keyword in row[2]:
+            filtered_topics.append(row)
+        else:
+            remaining_topics.append(row)
+
+    topic_counter = Counter(rows)
+
+    counted_and_filtered = []
+    for topic in filtered_topics:
+        count = topic_counter[topic[2]]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        counted_and_filtered.append(row)
+
+    #sorted_filtered = sorted(counted_and_filtered, key=lambda x: (x[5], x[2]), reverse=True)
+    sorted_filtered = sorted(counted_and_filtered, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+
+    counted_and_remaining = []
+    for topic in filtered_topics:
+        count = topic_counter[topic[2]]
+        row = [topic[0], topic[1], topic[2], topic[4], topic[5],count]
+        counted_and_remaining.append(row)
+
+    #sorted_remaining = sorted(counted_and_remaining, key=lambda x: (x[5], x[2]), reverse=True)
+    sorted_remaining = sorted(counted_and_remaining, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+
+    for topic in sorted_filtered:
+        all_topics.append(topic)
+
+    for topic in sorted_remaining:
+        all_topics.append(topic)
+
+
+
+    #today = '2017-04-30'
+    #today = get_datestring()
+    #rows = []
+
+    #for row in tsv:
+    #    if not fileinput.isfirstline():
+    #        cells = row.split('\t')
+    #        if cells[0] == today:
+    #            del(cells[0])
+    #            rows.append(cells)
+
+    #for row in rows:
+    #    row[5] = int(row[5])
 
     # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
-    return sorted_rows
+    #sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+    return all_topics
 
 
 
