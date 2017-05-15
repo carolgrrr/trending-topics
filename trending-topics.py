@@ -200,8 +200,8 @@ def add_regions(original_file, region_file, outfile):
                     topics_with_regions.append(row)
     
     #today = get_datestring()
-    today = '2017-04-26'
-    #today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
 
 
     if not(os.path.isfile(outfile)):
@@ -255,8 +255,8 @@ def generate_content_string(settings_filename, report_filename, sort_by):
 
     content_string += '</table>'
     #today = get_datestring()
-    today = '2017-04-26'
-    # today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
     content_string += '<br>Updated on %s.' % today
 
     return content_string
@@ -326,8 +326,8 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-    today = '2017-04-26'
-    #today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
     #today = get_datestring()
     rows = []
 
@@ -348,8 +348,8 @@ def sort_by_trend_count(tsv):
 
 def sort_by_location(tsv):
     #today = get_datestring()
-    today = '2017-04-26'
-    #today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
     rows = []
 
     for row in tsv:
@@ -376,8 +376,8 @@ def sort_by_all(tsv, settings_filename):
     # sort remaining by count
 
     #today = get_datestring()
-    today = '2017-04-26'
-    #today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
     rows = []
 
     for row in tsv:
@@ -468,8 +468,8 @@ def main():
     places = find_places(twitter)
 
     #today = get_datestring()
-    today = '2017-04-26'
-    #today = '2017-04-30'
+    #today = '2017-04-26'
+    today = '2017-04-30'
 
     all_topics = prefix + '-' + today + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
