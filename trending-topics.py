@@ -199,8 +199,8 @@ def add_regions(original_file, region_file, outfile):
                     row.extend([region[1], region[2], region[3], region[4]])
                     topics_with_regions.append(row)
     
-    today = get_datestring()
-    #today = '2017-04-26'
+    #today = get_datestring()
+    today = '2017-04-26'
     #today = '2017-04-30'
 
 
@@ -254,8 +254,8 @@ def generate_content_string(report_filename, sort_by):
         prev_trend = trend
 
     content_string += '</table>'
-    today = get_datestring()
-    # today = '2017-04-26'
+    #today = get_datestring()
+    today = '2017-04-26'
     # today = '2017-04-30'
     content_string += '<br>Updated on %s.' % today
 
@@ -327,9 +327,9 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
     print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-    #today = '2017-04-26'
+    today = '2017-04-26'
     #today = '2017-04-30'
-    today = get_datestring()
+    #today = get_datestring()
     rows = []
 
     for row in tsv:
@@ -348,8 +348,8 @@ def sort_by_trend_count(tsv):
     return sorted_rows
 
 def sort_by_location(tsv):
-    today = get_datestring()
-    #today = '2017-04-26'
+    #today = get_datestring()
+    today = '2017-04-26'
     #today = '2017-04-30'
     rows = []
 
@@ -373,8 +373,8 @@ def sort_by_all(tsv):
     # sort keyword by count
     # sort remaining by count
 
-    today = get_datestring()
-    #today = '2017-04-26'
+    #today = get_datestring()
+    today = '2017-04-26'
     #today = '2017-04-30'
     rows = []
 
@@ -422,9 +422,6 @@ def sort_by_all(tsv):
         all_topics.append(topic)
 
 
-
-    #today = '2017-04-30'
-    #today = get_datestring()
     #rows = []
 
     #for row in tsv:
@@ -458,12 +455,12 @@ def main():
     place_ids = find_place_ids(twitter)
     places = find_places(twitter)
 
-    datestring = get_datestring()
-    #datestring = '2017-04-26'
+    #today = get_datestring()
+    datestring = '2017-04-26'
     #datestring = '2017-04-30'
 
-    all_topics = prefix + '-' + datestring + '.csv'
-    filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
+    all_topics = prefix + '-' + today + '.csv'
+    filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
     top_topics = 'top-' + all_topics
 
     # final order
