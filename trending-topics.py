@@ -213,7 +213,7 @@ def add_regions(original_file, region_file, outfile):
             tsv_file.write(row)
             
     print("regions added.")
-    return region_filename
+    #return outfile
 
 
 def create_wordpress_client(settings_filename):
@@ -228,6 +228,7 @@ def create_wordpress_client(settings_filename):
 
     return client
 
+
 def generate_content_string(report_filename, sort_by):
     content_string = '<table>'
     prev_trend = ""
@@ -237,6 +238,8 @@ def generate_content_string(report_filename, sort_by):
             sorted_data = sort_by_trend_count(tsv_file)
         elif sort_by == 'location':
             sorted_data = sort_by_location(tsv_file)
+        elif sort_by == 'all':
+            sorted_data = sort_by_all(tsv_file)
 
     for cells in sorted_data:
         region = cells[9]
@@ -251,7 +254,7 @@ def generate_content_string(report_filename, sort_by):
 
     content_string += '</table>'
     today = get_datestring()
-    content_string += '<br>Updated on %s' % today
+    content_string += '<br>Updated on %s.' % today
 
     return content_string
 
@@ -358,6 +361,32 @@ def sort_by_location(tsv):
     sorted_rows = sorted(rows, key = lambda x: (x[9], x[8], x[0], x[2], -x[5]))
     return sorted_rows
 
+def sort_by_all(tsv):
+    # first only get today's trends
+    # then filter out keyword & keep remaining
+    # sort keyword by count
+    # sort remaining by count
+
+
+
+
+    #today = '2017-04-30'
+    today = get_datestring()
+    rows = []
+
+    for row in tsv:
+        if not fileinput.isfirstline():
+            cells = row.split('\t')
+            if cells[0] == today:
+                del(cells[0])
+                rows.append(cells)
+
+    for row in rows:
+        row[5] = int(row[5])
+
+    # x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
+    sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
+    return sorted_rows
 
 
 
@@ -382,6 +411,11 @@ def main():
     all_topics = prefix + '-' + datestring + '.csv'
     filtered_topics = prefix + '-' + filter_term + '-' + datestring + '.csv'
     top_topics = 'top-' + all_topics
+
+    # final order
+    # get_trending_topics(all_topics, place_ids, places, twitter)
+    # add_regions(all_topics, region_filename, trends_file)
+    # update_wordpress_page(settings, trends_file, 'all')
 
     # testing only interim file creation
     #extract_topics(all_topics, filtered_topics, filter_term)
