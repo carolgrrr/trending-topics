@@ -202,14 +202,12 @@ def add_regions(original_file, region_file, outfile):
     today = get_datestring()
     #today = '2017-04-30'
 
-    region_filename = outfile
 
-
-    if not(os.path.isfile(region_filename)):
-        with open(region_filename, 'w') as tsv_file:
+    if not(os.path.isfile(outfile)):
+        with open(outfile, 'w') as tsv_file:
             tsv_file.write('Date\tLocation\tWOE ID\tName\tEvents\tPromoted?\tCount\tLatitude\tLongitude\tNation\tRegion\n')
 
-    with open(region_filename, 'a') as tsv_file:
+    with open(outfile, 'a') as tsv_file:
         for topic in topics_with_regions:
             row = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" %(today, topic[0], topic[1], topic[2], topic[3], topic[4], topic[5], topic[6], topic[7], topic[8], topic[9])
             tsv_file.write(row)
@@ -284,9 +282,9 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
             filter_id = item.id
 
     if filter_id == "":
-        wp.call(NewPost(post))
+        wp.call(NewPost(page))
     else:
-        wp.call(posts.EditPost(filter_id, post))
+        wp.call(posts.EditPost(filter_id, page))
 
     print('%s posted.' % title)
 
@@ -372,6 +370,7 @@ def main():
     region_filename = config.get('files', 'regions')
     filtered_file = config.get('files', 'filtered')
     top_topics_file = config.get('files', 'top')
+    trends_file = config.get('files', 'trends')
     twitter = get_twitter(settings)
 
     place_ids = find_place_ids(twitter)
