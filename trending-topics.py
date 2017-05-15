@@ -458,9 +458,9 @@ def main():
     top_topics = 'top-' + all_topics
 
     # final order
-    # get_trending_topics(all_topics, place_ids, places, twitter)
-    # add_regions(all_topics, region_filename, trends_file)
-    # update_wordpress_page(settings, trends_file, 'all')
+    get_trending_topics(all_topics, place_ids, places, twitter)
+    add_regions(all_topics, region_filename, trends_file)
+    update_wordpress_page(settings, trends_file, 'all')
 
     # testing only interim file creation
     #extract_topics(all_topics, filtered_topics, filter_term)
