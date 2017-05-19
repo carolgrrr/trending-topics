@@ -273,12 +273,12 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 	page.title = title 
 	page.content = content_string
 	# uncomment below to publish
-	#post.post_status = publish
+	page.post_status = 'publish'
 	
 	filter_id = ""
-	#published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
+	published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
 	# this is called published pages but for testing purposes contains draft posts
-	published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'draft'}))
+	#published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'draft'}))
 
 	for item in published_pages:
 		if item.title == 'Twitter Trends Report':
@@ -429,10 +429,9 @@ def main():
 	top_topics = 'top-' + all_topics
 
 	# final order
-	get_trending_topics(all_topics, place_ids, places, twitter)
+	#get_trending_topics(all_topics, place_ids, places, twitter)
 	add_regions(all_topics, region_filename, trends_file)
 	update_wordpress_page(settings, trends_file, 'all')
-	#email_file(config, all_topics)
 
 	
 if __name__ == '__main__':
