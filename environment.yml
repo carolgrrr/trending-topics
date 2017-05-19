@@ -13,9 +13,11 @@ dependencies:
 - pip:
   - keyring==10.2
   - oauthlib==2.0.1
+  - ordereddict==1.1
   - python-wordpress-xmlrpc==2.3
   - requests==2.13.0
   - requests-oauthlib==0.7.0
   - twitterapi==2.4.3
+  - woocommerce==1.2.1
   - yagmail==0.5.156
 
