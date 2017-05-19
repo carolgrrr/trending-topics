@@ -411,8 +411,6 @@ def main():
 	filter_term = config.get('files', 'filter_term')
 	prefix = config.get('files', 'prefix')
 	region_filename = config.get('files', 'regions')
-	filtered_file = config.get('files', 'filtered')
-	top_topics_file = config.get('files', 'top')
 	trends_file = config.get('files', 'trends')
 	twitter = get_twitter(settings)
 
