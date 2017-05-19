@@ -205,11 +205,7 @@ def add_regions(original_file, region_file, outfile):
 		todays_topics.append(topic[2])
 
 	topic_counter = Counter(todays_topics)
-
 	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
-
 
 	if not(os.path.isfile(outfile)):
 		with open(outfile, 'w') as tsv_file:
@@ -222,7 +218,6 @@ def add_regions(original_file, region_file, outfile):
 			tsv_file.write(row)
 			
 	print("regions added.")
-	#return outfile
 
 
 def create_wordpress_client(settings_filename):
@@ -241,8 +236,6 @@ def create_wordpress_client(settings_filename):
 def generate_content_string(settings_filename, report_filename, sort_by):
 	content_string = ''
 	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
 	content_string += '<br>Updated on %s.<br>' % today
 	content_string += '<table>'
 	prev_trend = ""
@@ -268,11 +261,6 @@ def generate_content_string(settings_filename, report_filename, sort_by):
 
 	content_string += '</table>'
 
-	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
-	#content_string += '<br>Updated on %s.' % today
-
 	return content_string
 
 def update_wordpress_page(settings_filename, report_filename, sort_by):
@@ -280,11 +268,6 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 
 	content_string = generate_content_string(settings_filename, report_filename, sort_by)
 	title = 'Twitter Trends Report'
-	#if '-17-' in filename:
-	#    title = 'Today\'s Trending Topics (Containing 17) on Twitter'
-	#if '-top-' in filename:
-	#    title = 'Today\'s Top Trending Topics on Twitter'
-
 
 	page = WordPressPage()
 	page.title = title 
@@ -293,7 +276,6 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 	#post.post_status = publish
 	
 	filter_id = ""
-	#draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
 	#published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
 	# this is called published pages but for testing purposes contains draft posts
 	published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'draft'}))
@@ -342,8 +324,6 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 	print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
-	#today = '2017-04-26'
-	#today = '2017-04-30'
 	today = get_datestring()
 	rows = []
 
@@ -364,8 +344,6 @@ def sort_by_trend_count(tsv):
 
 def sort_by_location(tsv):
 	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
 	rows = []
 
 	for row in tsv:
@@ -386,14 +364,7 @@ def sort_by_all(tsv, settings_filename):
 	config = configparser.ConfigParser()
 	config.read(settings_filename)
 	keyword = config.get('files', 'filter_term')
-	# first only get today's trends
-	# then filter out keyword & keep remaining
-	# sort keyword by count
-	# sort remaining by count
-
 	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
 	rows = []
 
 	for row in tsv:
@@ -406,47 +377,25 @@ def sort_by_all(tsv, settings_filename):
 	all_topics = []
 	filtered_topics = []
 	remaining_topics = []
-	filtered_tags = []
-	remaining_tags = []
 
 	for row in rows:
 		if keyword in row[2]:
 			filtered_topics.append(row)
-			filtered_tags.append(row[2])
 		else:
 			remaining_topics.append(row)
-			remaining_tags.append(row[2])
-
-	# need to create counter of only hashtags
-	# but also maintain entire row to be used for 
-	filtered_counter = Counter(filtered_tags)
-	remaining_counter = Counter(remaining_tags)
 
 	counted_and_filtered = []
 	for topic in filtered_topics:
-		#count = filtered_counter[topic[2]]
-		#row = [topic[0], topic[1], topic[2], topic[4], topic[5],count, topic[6], topic[7], topic[8], topic[9]]
-		#counted_and_filtered.append(row)
 		topic[5] = int(topic[5])
 		counted_and_filtered.append(topic)
-		#print(row)
-
-	#sorted_filtered = sorted(counted_and_filtered, key=lambda x: (x[5], x[2]), reverse=True)
-	## x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-	# count = row[5]
 
 	sorted_filtered = sorted(counted_and_filtered, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
 
 	counted_and_remaining = []
 	for topic in remaining_topics:
-		#count = remaining_counter[topic[2]]
-		#row = [topic[0], topic[1], topic[2], topic[4], topic[5],count, topic[6], topic[7], topic[8], topic[9]]
-		#counted_and_remaining.append(row)
 		topic[5] = int(topic[5])
 		counted_and_remaining.append(topic)
 
-
-	#sorted_remaining = sorted(counted_and_remaining, key=lambda x: (x[5], x[2]), reverse=True)
 	sorted_remaining = sorted(counted_and_remaining, key=lambda x: (-x[5], x[2], x[9], x[8], x[0]))
 
 	for topic in sorted_filtered:
@@ -455,23 +404,7 @@ def sort_by_all(tsv, settings_filename):
 	for topic in sorted_remaining:
 		all_topics.append(topic)
 
-
-	#rows = []
-
-	#for row in tsv:
-	#    if not fileinput.isfirstline():
-	#        cells = row.split('\t')
-	#        if cells[0] == today:
-	#            del(cells[0])
-	#            rows.append(cells)
-
-	#for row in rows:
-	#    row[5] = int(row[5])
-
-	# x[5] = count x[2] = trend, x[0] = location, x[8] = nation, x[9] = region
-	#sorted_rows = sorted(rows, key = lambda x: (-x[5], x[2], x[9], x[8], x[0]))
 	return all_topics
-
 
 
 def main():
@@ -490,8 +423,6 @@ def main():
 	places = find_places(twitter)
 
 	today = get_datestring()
-	#today = '2017-04-26'
-	#today = '2017-04-30'
 
 	all_topics = prefix + '-' + today + '.csv'
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
@@ -501,34 +432,7 @@ def main():
 	get_trending_topics(all_topics, place_ids, places, twitter)
 	add_regions(all_topics, region_filename, trends_file)
 	update_wordpress_page(settings, trends_file, 'all')
-
-	# testing only interim file creation
-	#extract_topics(all_topics, filtered_topics, filter_term)
-	
-	#filtered_topics_with_regions = add_regions(filtered_topics, region_filename, filtered_file)
-	#filtered_topics_with_regions = 'regions-and-trending-topics-17-2017-04-26.csv'
-	#get_top_topics(all_topics)
-	#top_topics_with_regions = add_regions(top_topics, region_filename)
-
-	#post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
-	#post_report_to_wordpress(settings, filtered_file, 'trend')
-
-	#get_trending_topics(all_topics, place_ids, places, twitter)
-	#extract_topics(all_topics, filtered_topics, filter_term)
-
-	#my_filename = add_regions('trending-topics-17-2017-04-26.csv', region_filename)
-	#print(my_filename)
-	#post_report_to_wordpress(settings, my_filename, 'trend')
-
-	#filtered_topics_with_regions = add_regions(filtered_topics, region_filename)
-	#email_file(config, filtered_topics_with_regions)
-	#post_report_to_wordpress(settings, filtered_topics_with_regions, 'trend')
-	#post_report_to_wordpress(settings, filtered_topics_with_regions, 'location' )
-	#get_top_topics(all_topics)
-	#top_topics_with_regions = add_regions(top_topics, region_filename)
-	#email_file(config, top_topics_with_regions)
-	#post_report_to_wordpress(settings, top_topics_with_regions, 'trend')
-	#post_report_to_wordpress(settings, 'regions-and-top-trending-topics-2017-03-25.csv', 'location')
+	#email_file(config, all_topics)
 
 	
 if __name__ == '__main__':
