@@ -206,9 +206,9 @@ def add_regions(original_file, region_file, outfile):
 
 	topic_counter = Counter(todays_topics)
 
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 
 
 	if not(os.path.isfile(outfile)):
@@ -240,9 +240,9 @@ def create_wordpress_client(settings_filename):
 
 def generate_content_string(settings_filename, report_filename, sort_by):
 	content_string = ''
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 	content_string += '<br>Updated on %s.<br>' % today
 	content_string += '<table>'
 	prev_trend = ""
@@ -268,9 +268,9 @@ def generate_content_string(settings_filename, report_filename, sort_by):
 
 	content_string += '</table>'
 
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 	#content_string += '<br>Updated on %s.' % today
 
 	return content_string
@@ -343,8 +343,8 @@ def post_report_to_wordpress(settings_filename, report_filename, sort_by):
 
 def sort_by_trend_count(tsv):
 	#today = '2017-04-26'
-	today = '2017-04-30'
-	#today = get_datestring()
+	#today = '2017-04-30'
+	today = get_datestring()
 	rows = []
 
 	for row in tsv:
@@ -363,9 +363,9 @@ def sort_by_trend_count(tsv):
 	return sorted_rows
 
 def sort_by_location(tsv):
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 	rows = []
 
 	for row in tsv:
@@ -391,9 +391,9 @@ def sort_by_all(tsv, settings_filename):
 	# sort keyword by count
 	# sort remaining by count
 
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 	rows = []
 
 	for row in tsv:
@@ -489,16 +489,16 @@ def main():
 	place_ids = find_place_ids(twitter)
 	places = find_places(twitter)
 
-	#today = get_datestring()
+	today = get_datestring()
 	#today = '2017-04-26'
-	today = '2017-04-30'
+	#today = '2017-04-30'
 
 	all_topics = prefix + '-' + today + '.csv'
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
 	top_topics = 'top-' + all_topics
 
 	# final order
-	#get_trending_topics(all_topics, place_ids, places, twitter)
+	get_trending_topics(all_topics, place_ids, places, twitter)
 	add_regions(all_topics, region_filename, trends_file)
 	update_wordpress_page(settings, trends_file, 'all')
 
