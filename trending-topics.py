@@ -272,13 +272,10 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 	page = WordPressPage()
 	page.title = title 
 	page.content = content_string
-	# uncomment below to publish
 	page.post_status = 'publish'
 	
 	filter_id = ""
 	published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
-	# this is called published pages but for testing purposes contains draft posts
-	#published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'draft'}))
 
 	for item in published_pages:
 		if item.title == 'Twitter Trends Report':
@@ -428,8 +425,7 @@ def main():
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
 	top_topics = 'top-' + all_topics
 
-	# final order
-	#get_trending_topics(all_topics, place_ids, places, twitter)
+	get_trending_topics(all_topics, place_ids, places, twitter)
 	add_regions(all_topics, region_filename, trends_file)
 	update_wordpress_page(settings, trends_file, 'all')
 
