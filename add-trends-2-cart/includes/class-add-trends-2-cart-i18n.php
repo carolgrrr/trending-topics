@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://example.com
+ * @link       https://www.connectedaction.net
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    add-trends-2-cart
+ * @subpackage add-trends-2-cart/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    add-trends-2-cart
+ * @subpackage add-trends-2-cart/includes
+ * @author     Carol Schmitz
  */
-class Plugin_Name_i18n {
+class Add_Trends_2_Cart_i18n {
 
 
 	/**
