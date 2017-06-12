@@ -5,11 +5,11 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       http://example.com
+ * @link       https://connectedaction.net
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/public/partials
+ * @package    add-trends-2-cart
+ * @subpackage add-trends-2-cart/public/partials
  */
 ?>
 
