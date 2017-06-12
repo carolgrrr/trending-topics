@@ -8,5 +8,8 @@
  * Author URI: https://github.com/carolgrrr
  */
 
+add_action('woocommerce_add_to_cart', 'add_trends');
 
-function 
+function add_trends() {
+
+}
