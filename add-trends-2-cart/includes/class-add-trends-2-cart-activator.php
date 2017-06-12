@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://example.com
+ * @link       https://www.connectedaction.net
  * @since      1.0.0
  *
  * @package    add-trends-2-cart

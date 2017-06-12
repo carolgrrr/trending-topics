@@ -43,13 +43,13 @@ function activate_add_trends_2_cart() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
-function deactivate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+function deactivate_add_trends_2_cart() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-add-trends-2-cart-deactivator.php';
+	Add_Trends_2_Cart_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_plugin_name' );
-register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_add_trends_2_cart' );
+register_deactivation_hook( __FILE__, 'deactivate_add_trends_2_cart' );
 
 /**
  * The core plugin class that is used to define internationalization,
