@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.connectedaction.net/
- * @since             0.1
+ * @since             1.0.0
  * @package           add-trends-2-cart
  *
  * @wordpress-plugin
  * Plugin Name:       add-trends-2-cart
  * Plugin URI:        https://www.connectedaction.net/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           0.1
+ * Version:           1.0.0
  * Author:            Carol Schmitz
  * Author URI:        https://github.com/carolgrrr
  * License:           GPL-2.0+
@@ -34,9 +34,9 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
  */
-function activate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-activator.php';
-	Plugin_Name_Activator::activate();
+function activate_add_trends_2_cart() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-add-trends-2-cart-activator.php';
+	Add_Trends_2_Cart_Activator::activate();
 }
 
 /**
