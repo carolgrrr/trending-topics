@@ -55,7 +55,7 @@ register_deactivation_hook( __FILE__, 'deactivate_add_trends_2_cart' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-add-trends-2-cart.php';
 
 /**
  * Begins execution of the plugin.
@@ -66,10 +66,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function run_add_trends_2_cart() {
 
-	$plugin = new Plugin_Name();
+	$plugin = new Add_Trends_2_Cart();
 	$plugin->run();
 
 }
-run_plugin_name();
+run_add_trends_2_cart();
