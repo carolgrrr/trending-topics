@@ -29,11 +29,11 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-	 jQuery(document).ready(function(){
+	 $(document).ready(function(){
   		alert('test');
 	});
 
-	 jQuery( "#submit" ).click(function() {
+	 $( "#submit" ).click(function() {
   		alert( "Handler for .click() called." );
 	});
 
