@@ -32,6 +32,18 @@
 	$(document).ready(function(){
 	 	$( "#submit" ).click(function() {
   			alert( "Handler for .click() called." );
+
+  			var boxes = $(":checkbox:checked");
+
+  			$("input:checked").each(function() {
+  				var id = this.id;
+
+  				alert(id);
+  				
+  			});
+
+  			//var hashtag = $('#check:checked').val();
+    		//	alert(hashtag);
 		});
 	});
 
