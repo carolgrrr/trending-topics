@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       add-trends-2-cart
  * Plugin URI:        https://www.connectedaction.net/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin allows Twitter search maps to be added to the Connected Action WooCommerce shopping cart by selecting check boxes and clicking a submit button.
  * Version:           1.0.0
  * Author:            Carol Schmitz
  * Author URI:        https://github.com/carolgrrr
