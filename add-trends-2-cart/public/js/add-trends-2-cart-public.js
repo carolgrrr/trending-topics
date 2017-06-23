@@ -31,15 +31,15 @@
 
 	$(document).ready(function(){
 	 	$( "#submit" ).click(function() {
-  			alert( "Handler for .click() called." );
+  			//alert( "Handler for .click() called." );
 
   			var boxes = $(":checkbox:checked");
+  			var hashtags = [];
 
   			$("input:checked").each(function() {
   				var id = this.id;
-
   				alert(id);
-  				
+  				hashtags.push(id);
   			});
 
   			//var hashtag = $('#check:checked').val();
