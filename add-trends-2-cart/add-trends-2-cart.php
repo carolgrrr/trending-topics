@@ -73,3 +73,8 @@ function run_add_trends_2_cart() {
 
 }
 run_add_trends_2_cart();
+
+
+// https://wordpress.stackexchange.com/questions/53280/woocommerce-add-a-product-to-cart-programmatically-via-js-or-php
+global $woocommerce;
+$woocommerce->cart->add_to_cart($product_id);

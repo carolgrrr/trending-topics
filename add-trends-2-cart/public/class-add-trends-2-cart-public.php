@@ -101,3 +101,17 @@ class Add_Trends_2_Cart_Public {
 	}
 
 }
+
+    /**
+     * Add a product to the cart.
+     *
+     * @param string $product_id contains the id of the product to add to the cart
+     * @param string $quantity contains the quantity of the item to add
+     * @param int $variation_id
+     * @param array $variation attribute values
+     * @param array $cart_item_data extra cart item data we want to pass into the item
+     * @return bool
+     */
+    public function add_to_cart( $product_id, $quantity = 1, $variation_id = '', $variation = '', $cart_item_data = array() ) {
+
+    }
