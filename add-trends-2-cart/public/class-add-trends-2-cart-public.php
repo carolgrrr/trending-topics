@@ -112,6 +112,6 @@ class Add_Trends_2_Cart_Public {
      * @param array $cart_item_data extra cart item data we want to pass into the item
      * @return bool
      */
-    public function add_to_cart( $product_id, $quantity = 1, $variation_id = '', $variation = '', $cart_item_data = array() ) {
-
+    public function add_to_cart( $product_id, $quantity = 1, $cart_item_data = array() ) {
+    	return True;
     }
