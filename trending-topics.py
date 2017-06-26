@@ -267,7 +267,8 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 	wp = create_wordpress_client(settings_filename)
 
 	content_string = generate_content_string(settings_filename, report_filename, sort_by)
-	title = 'Twitter Trends Report'
+	#title = 'Twitter Trends Report'
+	title = 'testing checkboxes'
 
 	page = WordPressPage()
 	page.title = title 
@@ -417,14 +418,15 @@ def main():
 	place_ids = find_place_ids(twitter)
 	places = find_places(twitter)
 
-	today = get_datestring()
+	#today = get_datestring()
+	today = '2017-04-26'
 
 	all_topics = prefix + '-' + today + '.csv'
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
 	top_topics = 'top-' + all_topics
 
 	#get_trending_topics(all_topics, place_ids, places, twitter)
-	#add_regions(all_topics, region_filename, trends_file)
+	add_regions(all_topics, region_filename, trends_file)
 	#update_wordpress_page(settings, trends_file, 'all')
 
 	
