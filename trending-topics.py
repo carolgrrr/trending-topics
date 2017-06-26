@@ -279,7 +279,8 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 	published_pages = wp.call(posts.GetPosts({'post_type': 'page', 'post_status': 'publish'}))
 
 	for item in published_pages:
-		if item.title == 'Twitter Trends Report':
+		#if item.title == 'Twitter Trends Report':
+		if item.title == 'testing checkboxes':
 			filter_id = item.id
 
 	if filter_id == "":
@@ -419,7 +420,7 @@ def main():
 	places = find_places(twitter)
 
 	#today = get_datestring()
-	today = '2017-04-26'
+	today = '2017-04-30'
 
 	all_topics = prefix + '-' + today + '.csv'
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
@@ -427,7 +428,7 @@ def main():
 
 	#get_trending_topics(all_topics, place_ids, places, twitter)
 	add_regions(all_topics, region_filename, trends_file)
-	#update_wordpress_page(settings, trends_file, 'all')
+	update_wordpress_page(settings, trends_file, 'all')
 
 	
 if __name__ == '__main__':
