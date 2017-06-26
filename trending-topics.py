@@ -255,7 +255,7 @@ def generate_content_string(settings_filename, report_filename, sort_by):
 		trend = cells[2]
 		count = cells[5]
 		if trend != prev_trend:
-			table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+			table_row = '<tr><td><td><input id="' + trend +'" type="checkbox"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
 			content_string += table_row
 		prev_trend = trend
 
@@ -423,9 +423,9 @@ def main():
 	filtered_topics = prefix + '-' + filter_term + '-' + today + '.csv'
 	top_topics = 'top-' + all_topics
 
-	get_trending_topics(all_topics, place_ids, places, twitter)
-	add_regions(all_topics, region_filename, trends_file)
-	update_wordpress_page(settings, trends_file, 'all')
+	#get_trending_topics(all_topics, place_ids, places, twitter)
+	#add_regions(all_topics, region_filename, trends_file)
+	#update_wordpress_page(settings, trends_file, 'all')
 
 	
 if __name__ == '__main__':
