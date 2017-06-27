@@ -255,7 +255,7 @@ def generate_content_string(settings_filename, report_filename, sort_by):
 		trend = cells[2]
 		count = cells[5]
 		if trend != prev_trend:
-			table_row = '<tr><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
+			table_row = '<tr><td><td><input id="' + trend +'" type="checkbox"></td><td>' + region + '</td><td>' + nation + '</td><td>' + location + '</td><td>' + trend + '</td><td>' + str(count) + '</td></tr>'
 			content_string += table_row
 		prev_trend = trend
 
@@ -288,37 +288,6 @@ def update_wordpress_page(settings_filename, report_filename, sort_by):
 
 	print('%s posted.' % title)
 
-
-def post_report_to_wordpress(settings_filename, report_filename, sort_by):
-	wp = create_wordpress_client(settings_filename)
-
-	filename = report_filename
-	content_string = generate_content_string(filename, sort_by)
-	if '-17-' in filename:
-		title = 'Today\'s Trending Topics (Containing 17) on Twitter'
-	if '-top-' in filename:
-		title = 'Today\'s Top Trending Topics on Twitter'
-
-
-	post = WordPressPost()
-	post.title = title 
-	post.content = content_string
-	# uncomment below to publish
-	#post.post_status = publish
-	
-	filter_id = ""
-	draft_posts = wp.call(posts.GetPosts({'post_status': 'draft'}))
-
-	for draft in draft_posts:
-		if draft.title == 'Todays Top Trending Topics (Containing 17) on Twitter':
-			filter_id = draft.id
-
-	if filter_id != "":
-		wp.call(posts.EditPost(filter_id, post))
-	else:
-		wp.call(NewPost(post))
-
-	print('%s posted.' % title)
 
 def sort_by_trend_count(tsv):
 	today = get_datestring()
