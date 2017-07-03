@@ -79,3 +79,5 @@ run_add_trends_2_cart();
 global $woocommerce;
 //$woocommerce->cart->add_to_cart($product_id);
 //$product_id = 39495
+// $string|bool = WC_Cart::add_to_cart( $product_id, $quantity, $variation_id, $variation, $cart_item_data );
+
