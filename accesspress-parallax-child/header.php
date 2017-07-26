@@ -20,16 +20,14 @@
 
 <head>
 
-	41468
-
 	<?php
 
 	if (is_page(41461)) {
 		echo '<script language="javascript">';
 		echo 'alert("inside conditional include")';
 		echo '</script>';
-
 	}
+	?>
 
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 
