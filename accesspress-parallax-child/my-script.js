@@ -1,14 +1,21 @@
-jQuery(document).ready(function(){
-	jQuery( "#submit" ).click(function() {
-  		//alert( "Handler for .click() called." );
+alert("my script has loaded.");
 
-  		var boxes = jQuery(":checkbox:checked");
-  		var hashtags = [];
+(function( $ )) {
+  $(document).ready(function(){
 
-  		jQuery("input:checked").each(function() {
-  			var id = this.id;
-  			alert(id);
-  			hashtags.push(id);
-  		});
-	});
-});
+    $( "#submit" ).click(function() {
+      //alert( "Handler for .click() called." );
+
+      var boxes = jQuery(":checkbox:checked");
+      var hashtags = [];
+
+      $("input:checked").each(function() {
+        var id = this.id;
+        alert(id);
+        hashtags.push(id);
+      });
+    });
+  });
+})( jQuery );
+
+
