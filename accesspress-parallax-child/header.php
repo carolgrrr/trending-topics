@@ -23,7 +23,19 @@
 	<?php
 
 	if (is_page(41461)) {
-		echo '<script language="javascript">';
+		echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>';
+		echo '$(document).ready(function(){'
+		echo '$( "#submit" ).click(function() {'
+		echo 'var boxes = jQuery(":checkbox:checked")';
+      	echo 'var boxes = jQuery(":checkbox:checked")';
+      	echo 'var hashtags = []';
+		echo '$("input:checked").each(function() {'
+        echo 'var id = this.id';
+        echo 'alert(id)';
+        echo 'hashtags.push(id)';
+      	echo '})';
+    	echo '})';
+  		echo '})';
 		echo 'alert("inside conditional include")';
 		echo '</script>';
 	}
