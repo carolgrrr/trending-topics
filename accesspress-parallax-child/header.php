@@ -23,6 +23,7 @@
 	<?php
 
 	if (is_page(41461)) {
+		echo 'alert("inside conditional include")';
 		echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>';
 		echo '$(document).ready(function(){ $( "#submit" ).click(function() { var boxes = jQuery(":checkbox:checked")';
       	echo 'var boxes = jQuery(":checkbox:checked")';
@@ -33,7 +34,6 @@
       	echo '})';
     	echo '})';
   		echo '})';
-		echo 'alert("inside conditional include")';
 		echo '</script>';
 	}
 	?>
